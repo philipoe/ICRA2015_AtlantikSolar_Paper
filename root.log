@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.3.3)  21 SEP 2014 02:50
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2014.3.3)  21 SEP 2014 14:07
 entering extended mode
 **C:/Users/philipoe/Desktop/ICRA2015_AtlantikSolar/root.tex
 (C:/Users/philipoe/Desktop/ICRA2015_AtlantikSolar/root.tex
@@ -302,10 +302,15 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 File: images/1_AtlantikSolarCollage.jpg Graphic file (type jpg)
 
 <use images/1_AtlantikSolarCollage.jpg>
-Package pdftex.def Info: images/1_AtlantikSolarCollage.jpg used on input line 1
-0.
+Package pdftex.def Info: images/1_AtlantikSolarCollage.jpg used on input line 9
+.
 (pdftex.def)             Requested size: 245.71811pt x 140.37387pt.
- [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
+
+Underfull \hbox (badness 1509) in paragraph at lines 6--13
+\OT1/ptm/m/n/10 (wing span above 20m) High-Altitude Long-Endurance
+ []
+
+[1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
  <C:/Users/philipoe/Desktop/ICRA2015_AtlantikSolar/images/1_AtlantikSolarCollag
@@ -435,12 +440,12 @@ File: images/9_CAD_AtlantikSolarAvionics.jpg Graphic file (type jpg)
 Package pdftex.def Info: images/9_CAD_AtlantikSolarAvionics.jpg used on input l
 ine 60.
 (pdftex.def)             Requested size: 245.71811pt x 121.93265pt.
-) [5 <C:/Users/philipoe/Desktop/ICRA2015_AtlantikSolar/images/7_CAD_AtlantikSol
-arStructure.jpg> <C:/Users/philipoe/Desktop/ICRA2015_AtlantikSolar/images/8b_At
-lantikSolar_Avionics.pdf, page is rotated 90 degrees> <C:/Users/philipoe/Deskto
-p/ICRA2015_AtlantikSolar/images/9_CAD_AtlantikSolarAvionics.jpg>]
+)
 (C:\Users\philipoe\Desktop\ICRA2015_AtlantikSolar\chapters/4_ExperimentalResult
-s.tex)
+s.tex [5 <C:/Users/philipoe/Desktop/ICRA2015_AtlantikSolar/images/7_CAD_Atlanti
+kSolarStructure.jpg> <C:/Users/philipoe/Desktop/ICRA2015_AtlantikSolar/images/8
+b_AtlantikSolar_Avionics.pdf, page is rotated 90 degrees> <C:/Users/philipoe/De
+sktop/ICRA2015_AtlantikSolar/images/9_CAD_AtlantikSolarAvionics.jpg>])
 Missing character: There is no ï in font ptmr7t!
 Missing character: There is no ¿ in font ptmr7t!
 Missing character: There is no ½ in font ptmr7t!
@@ -471,40 +476,55 @@ Missing character: There is no ½ in font ptmr7t!
 Missing character: There is no ï in font ptmr7t!
 Missing character: There is no ¿ in font ptmr7t!
 Missing character: There is no ½ in font ptmr7t!
- (C:\Users\philipoe\Desktop\ICRA2015_AtlantikSolar\root.bbl
-Underfull \hbox (badness 2005) in paragraph at lines 7--13
+
+(C:\Users\philipoe\Desktop\ICRA2015_AtlantikSolar\root.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 7--12
+[]\OT1/ptm/m/n/8 Evan Ack-er-man.  Gi-ant solar-powered uavs are at-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--12
+\OT1/ptm/m/n/8 mo-spheric satel-lites.  IEEE Spec-trum, Au-gust 21$[]$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--12
+\OT1/ptm/m/n/8 2013.  Re-trieved from $\OT1/pcr/m/n/8 http : / / spectrum . iee
+e .$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--12
+$\OT1/pcr/m/n/8 org / automaton / robotics / aerial-[]robots /$
+ []
+
+
+Overfull \hbox (22.40999pt too wide) in paragraph at lines 7--12
+$\OT1/pcr/m/n/8 giant-[]solar-[]powered-[]uavs-[]are-[]atmospheric-[]satellites
+$\OT1/ptm/m/n/8 . 
+ []
+
+
+Underfull \hbox (badness 3942) in paragraph at lines 14--20
 []\OT1/ptm/m/n/8 Alan Coc-coni.  Ac propul-sion's so-lar elec-tric pow-ered so-
-long
+
  []
 
 
-Underfull \hbox (badness 1436) in paragraph at lines 7--13
-\OT1/ptm/m/n/8 uav.  Tech-ni-cal re-port, AC Propul-sion, 2005.  Re-trieved fro
-m
+Underfull \hbox (badness 2671) in paragraph at lines 27--32
+[]\OT1/ptm/m/n/8 M. Drela.  Xfoil 6.9 user primer.  Tech-ni-cal re-port, MIT
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 7--13
-$\OT1/pcr/m/n/8 {http : / / www . tu . no / migrationcatalog / 2005 / 07 / 24 /
-$
- []
-
-
-Underfull \hbox (badness 2293) in paragraph at lines 32--37
+Underfull \hbox (badness 1590) in paragraph at lines 39--44
 []\OT1/ptm/m/n/8 K. Kimura and D.G. Stephen-son.  So-lar ra-di-a-tion on cloudy
 
  []
 
 
-Underfull \hbox (badness 1509) in paragraph at lines 32--37
-\OT1/ptm/m/n/8 days.  Tech-ni-cal re-port, Na-tional Re-search Coun-cil of Cana
-da,
- []
-
-
-Underfull \hbox (badness 5245) in paragraph at lines 32--37
-\OT1/ptm/m/n/8 1969.  Re-trieved from $\OT1/pcr/m/n/8 {http : / / web . mit . e
-du / parmstr /$
+Underfull \hbox (badness 2990) in paragraph at lines 39--44
+\OT1/ptm/m/n/8 Re-trieved from $\OT1/pcr/m/n/8 {http : / / web . mit . edu / pa
+rmstr / Public /$
  []
 
 )
@@ -521,13 +541,13 @@ Before submitting the final camera ready copy, remember to:
 
 [6] (C:\Users\philipoe\Desktop\ICRA2015_AtlantikSolar\root.aux) ) 
 Here is how much of TeX's memory you used:
- 2983 strings out of 493921
- 45556 string characters out of 3144868
- 109871 words of memory out of 3000000
- 6199 multiletter control sequences out of 15000+200000
+ 2984 strings out of 493921
+ 45603 string characters out of 3144868
+ 108879 words of memory out of 3000000
+ 6200 multiletter control sequences out of 15000+200000
  44502 words of font info for 87 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 42i,12n,23p,1716b,287s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,12n,23p,1646b,287s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Fi
 les (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files (x86)/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files (x86)/MiKT
@@ -548,7 +568,7 @@ cmsy8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb
 m Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 
 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on root.pdf (6 pages, 1866503 bytes).
+Output written on root.pdf (6 pages, 1867198 bytes).
 PDF statistics:
  229 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

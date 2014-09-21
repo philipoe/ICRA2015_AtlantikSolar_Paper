@@ -1,7 +1,14 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{DellaCa_BT}
 Master's thesis.
+
+\bibitem{IEEE_AtmosphericSatellites}
+Evan Ackerman.
+\newblock Giant solar-powered uavs are atmospheric satellites.
+\newblock IEEE Spectrum, August 21\textsuperscript{st} 2013.
+\newblock Retrieved from
+  \url{http://spectrum.ieee.org/automaton/robotics/aerial-robots/giant-solar-powered-uavs-are-atmospheric-satellites}.
 
 \bibitem{Cocconi_SoLong}
 Alan Cocconi.
@@ -51,5 +58,13 @@ Scott Morton, Luke Scharber, and Nikalaos Papanikolopoulos.
 A.~Noth.
 \newblock {\em Design of Solar Powered Airplanes for Continuous Flight}.
 \newblock PhD thesis, ETH Zurich, 2008.
+
+\bibitem{QinetiQ_Zephyr14dayRecord}
+QinetiQ.
+\newblock Qinetiq files for three world records for its zephyr solar powered
+  uav.
+\newblock QinetiQ Press Release, August 24\textsuperscript{st} 2010.
+\newblock Retrieved from
+  \url{http://www.qinetiq.com/media/news/releases/Pages/three-world-records.aspx}.
 
 \end{thebibliography}
