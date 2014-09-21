@@ -1,0 +1,188 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%2345678901234567890123456789012345678901234567890123456789012345678901234567890
+%        1         2         3         4         5         6         7         8
+
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
+
+%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
+
+\IEEEoverridecommandlockouts                              % This command is only needed if 
+                                                          % you want to use the \thanks command
+
+\overrideIEEEmargins                                      % Needed to meet printer requirements.
+
+% See the \addtolength command later in the file to balance the column lengths
+% on the last page of the document
+
+% The following packages can be found on http:\\www.ctan.org
+%\usepackage{graphics} % for pdf, bitmapped graphics files
+%\usepackage{epsfig} % for postscript graphics files
+%\usepackage{mathptmx} % assumes new font selection scheme installed
+%\usepackage{times} % assumes new font selection scheme installed
+%\usepackage{amsmath} % assumes amsmath package installed
+%\usepackage{amssymb}  % assumes amsmath package installed
+
+\title{\LARGE \bf
+A solar-powered hand-launchable UAV for low-altitude multi-day continuous flight
+}
+
+\author{Philipp Oettershagen$^{1}$, Thomas Mantel, Amir Melzer, Stefan Leutenegger, Konstantinos Alexis$^{2}$ and Roland Siegwart% <-this % stops a space
+\thanks{*This work was supported by a number of project partners and generous individuals, see http://www.atlantiksolar.ethz.ch/  }% <-this % stops a space
+\thanks{All authors are part of the Autonomous Systems Lab, Swiss Federal Institute of Technology Zurich (ETH Zurich). Leonhardstrasse 21, 8092 Zurich, Switzerland. }
+\thanks{$^{1}$
+        {\tt\small Corresponding author, philipp.oettershagen@mavt.ethz.ch}}%
+}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+
+Abstract. Idea for this paper:
+
+ - Conceptual design, realization/integration, development of onboard systems, flight testing and verification of conceptual/preliminary design => Complete cycle including all steps can be shown here.
+   - Demonstrations -> rather basic control approaches chosen, i.e. this platform will be the basis for further research in control, guidance \& navigation, mapping and will go towards the applications of XXX
+    - solar-powered, hand-launchable 5m-class Unmanned Aerial Vehicle with multi-day continuous flight capability combined with payload capacity for long-endurance SAR and inspection missions.
+Questions:
+      - This paper = engineering paper, rest is then BASING upon this paper (use it as a ref). Is this OK? Is the chance that this will be accepted big enough? -> Yes, focus on ``complete cycle'' here, with more details in papers XXX to YYY
+
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ - We ware special : mission applications possible, long endurance, combination
+\section{INTRODUCTION}
+
+
+
+  (a) Background
+    - Purpose\&applications\&advantages of solar-powered UAVs in general
+  - Recent interest in HALE solar-powered UAVs -> Disadvantages? Or just lead to LALE UAVs as alternative
+  - History/Preceeding research in solar UAVs (very brief)
+      - recent papers in the same category. LALE solar UAVs. Then show that no similar solar-uav has been made?
+
+  (b) this paper
+   - Conceptual design, realization/integration, development of onboard systems, flight testing => Complete cycle including all steps can be shown here.
+   - Based on  previous work at ETHZ/ASL (don't go into details)
+   - LALE solar powered UAV, for use in Applications XXX,YYY,ZZZ, towards multi-day endurance, with advantages of XXX
+   - Demonstrations -> rather basic control approaches chosen, i.e. this platform will be the basis for further research in control, guidance \& navigation, mapping and will go towards the applications of XXX
+  
+   Direct contributions of this paper:
+1) conceptual design by us
+2) platform realization (hardware, avionics/electronics) by us, 
+3) estimation by us, rather basic pid control
+3) tested/verified in extreme scenarios
+   
+   
+   ------- LITERATURE ----
+
+Other sUAVs (non-LALE)
+ - Zephyr, Solar Impulse 1\&2, pathfinder, helios \& all NASA. Solara 50\&60 new, then the stuff that facebook bought.
+Other LALE-sUAVs:
+[1]  ``Solar Powered UAV: Design and Experiments'', S. Morton, IROS2014
+[2] SoLong Design report, 2005, but manually flown
+[3] SkySailor \& co.
+
+Recheck: 
+[a] A.J. Colozza: Preliminary Design of a Long Endurance Mars Aircraft, AIAA Paper 90-2000
+
+\section{CONCEPTUAL DESIGN}
+REFs: [1] Leutenegger@JIRS. [2] PhD Noth.
+ - requirements and constraints.
+ - market survey of basic technologies. Ref to Noth and so on? No, not here, but mention the underlying technologies briefly in the separate subchapters.
+   - Aerodynamic considerations: Introduction to basic static level flight modelling of power consumption and stuff. Main REF to Noth and CO.
+   - generalized results (a) t\_excess vs lat and mbat and stuff and (b) SoC margin w.r.t. cloud coverage factor and turbulence factor
+   - Specific results (airframe results) for our requirements: wingspan, size, weight (as a result from the last section).
+  
+\section{DETAILED DESIGN AND REALIZATION}
+(a) real hardware / Airframe design
+  - Structure / how realized
+  - CAD Model of
+  	- whole plane
+  	- structure in wings
+  	- avionics installation \&implementation
+   - Energy System: Bats\&Solar Power
+   - weight distribution table (single parts, or better per component?)
+(b) Propulsion
+  - Propeller. Motor.
+  - Test bench measurements?
+(c) avionics
+ + Overview Flowchart of components and interaction.
+   - sensors and drivers
+   - autopilot / Pixhawk
+   - gps \& stuff
+(d) payload
+  - VI Sensor [ref to VI-sensor paper; ref to Leutenegger thesis?]
+(e) comparison to conceptual design.
+
+Onboard state estimation \& control
+ - State estimation -> REF to stefan\&Amir paper
+ - System Identification \& Modelling
+ - Control using PID,  outer loops TECS \& L1 (Ref to OMLAS MED paper, also saying that there is future technologies which are being developed).
+ - Full pre-flight verification in HIL
+ 
+ (f) preliminary / low level results
+  - control:   - SE\&Control: PID performance over various trim points. PID computational requirements (low!)
+  - state estimation
+ 
+ \section{EXPERIMENTAL RESULTS}
+ 
+ [make this large, cause this is the main contribution?]
+
+  - Power System
+  - 12hrs battery powered flight -> power efficiency
+  - 12hrs sensor flight -> with mppts for sure
+  - 24hrs day/night flight
+  - mapping missions in ICARUS. REF to Separate paper??? Yes, but only once both are accepted.
+    
+ Other (TBD)
+  - Meteo planning? Nope. only mention as side note.
+  - Regulations? Nope. only mention as side note.
+   
+\section{CONCLUSIONS}
+
+A conclusion section is not required. Although a conclusion may review the main points of the paper, do not replicate the abstract as the conclusion. A conclusion might elaborate on the importance of the work or suggest applications and extensions. 
+
+\addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
+                                  % on the last page of the document manually. It shortens
+                                  % the textheight of the last page by a suitable amount.
+                                  % This command does not take effect until the next page
+                                  % so it should come on the page before the last. Make
+                                  % sure that you do not shorten the textheight too much.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{APPENDIX}
+
+Appendixes should appear before the acknowledgment.
+
+\section*{ACKNOWLEDGMENT}
+
+The preferred spelling of the word �acknowledgment� in America is without an �e� after the �g�. Avoid the stilted expression, �One of us (R. B. G.) thanks . . .�  Instead, try �R. B. G. thanks�. Put sponsor acknowledgments in the unnumbered footnote on the first page.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+References are important to the reader; therefore, each citation must be complete and correct. If at all possible, references should be commonly available publications.
+
+
+
+\begin{thebibliography}{99}
+
+\bibitem{c1} G. O. Young, �Synthetic structure of industrial plastics (Book style with paper title and editor),� 	in Plastics, 2nd ed. vol. 3, J. Peters, Ed.  New York: McGraw-Hill, 1964, pp. 15�64.
+\end{thebibliography}
+
+\end{document}

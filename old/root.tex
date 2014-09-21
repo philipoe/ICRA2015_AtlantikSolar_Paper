@@ -1,0 +1,266 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%2345678901234567890123456789012345678901234567890123456789012345678901234567890
+%        1         2         3         4         5         6         7         8
+
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
+
+%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
+
+\IEEEoverridecommandlockouts                              % This command is only needed if 
+                                                          % you want to use the \thanks command
+
+\overrideIEEEmargins                                      % Needed to meet printer requirements.
+
+% See the \addtolength command later in the file to balance the column lengths
+% on the last page of the document
+
+% The following packages can be found on http:\\www.ctan.org
+%\usepackage{graphics} % for pdf, bitmapped graphics files
+%\usepackage{epsfig} % for postscript graphics files
+%\usepackage{mathptmx} % assumes new font selection scheme installed
+%\usepackage{times} % assumes new font selection scheme installed
+\usepackage{amsmath} % assumes amsmath package installed
+%\usepackage{amssymb}  % assumes amsmath package installed
+\usepackage{url}
+\usepackage{nicefrac}
+
+\title{\LARGE \bf A solar-powered hand-launchable UAV for low-altitude multi-day continuous flight}
+
+\author{Philipp Oettershagen$^{1}$, Konrad Rudin$^{2}$, Amir Melzer, Thomas Mantel$^{3}$, \\ Stefan Leutenegger, Konstantinos Alexis$^{4}$ and Roland Siegwart$^{5}$% <-this % stops a space
+\thanks{All authors are part of the Autonomous Systems Lab, Swiss Federal Institute of Technology Zurich (ETH Zurich). Leonhardstrasse 21, 8092 Zurich, Switzerland. }
+\thanks{*This work was supported by a number of project partners and generous individuals, see http://www.atlantiksolar.ethz.ch/  }% <-this % stops a space
+\thanks{$^{1}$ {\tt\small PhD Student \& Corresponding author, philipp.oettershagen@mavt.ethz.ch}}%
+\thanks{$^{2}$ {\tt\small PhD Student}}%
+\thanks{$^{3}$ {\tt\small Research Engineer}}%
+\thanks{$^{4}$ {\tt\small Postdoctoral Researcher}}%
+\thanks{$^{5}$ {\tt\small Professor}}%
+ }
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+
+Abstract. Idea for this paper:
+
+ - Conceptual design, realization/integration, development of onboard systems, flight testing and verification of conceptual/preliminary design => Complete cycle including all steps can be shown here.
+   - Demonstrations -> rather basic control approaches chosen, i.e. this platform will be the basis for further research in control, guidance \& navigation, mapping and will go towards the applications of XXX
+    - solar-powered, hand-launchable 5m-class Unmanned Aerial Vehicle with multi-day continuous flight capability combined with payload capacity for long-endurance SAR and inspection missions.
+Questions:
+      - This paper = engineering paper, rest is then BASING upon this paper (use it as a ref). Is this OK? Is the chance that this will be accepted big enough? -> Yes, focus on ``complete cycle'' here, with more details in papers XXX to YYY
+
+\end{abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ - We ware special : mission applications possible, long endurance, combination
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION1: INTRODUCTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{INTRODUCTION}
+
+ \subsection{Introduction to solar-powered UAVs}
+ When carefully designed, solar-electrically powered fixed-wing Unmanned Aerial Vehicles (UAVs) can exhibit significantly increased flight endurance over purely-electrically or even gas-powered aerial vehicles. Given certain environmental conditions and flight performance, a solar-powered UAV creates \''surplus energy\'' when observed over a full day-night cycle, i.e. it will fully recharge its batteries during the day to continue flight through the night and potentially also the following day-night cycles. Long endurance - and especially this multi-day continuous flight capability often termed \''perpetual endurance\'' - is of significant interest for large-scale mapping, observation or telecommunications relay applications as they occur in Search-And-Rescue (SAR) missions, industrial or agricultural inspection, meteorological surveys, border patrol and more \cite{NASA_Pathfinder}.
+ 
+Research in solar-powered UAVs of the High-Altitude Long Endurance (HALE) type has been going on since the 1990s \cite{Noth_PhD}. Recently, interest in employing these large-scale UAVs (wing span above 20m) as \''atmospheric satellites\'' - i.e. stationary/loitering platforms e.g. for telecommunications relay - has peaked [REF aquisitions]. Notable examples of this trend are Solara 50 [REF] and Zephyr[QinetiQ], the latter of which has already demonstrated a continuous flight of 11 days[REF QinetiQ]. In contrast, smaller scale ( up to 5m wing span) solar-powered UAVs are mostly designed for Low-Altitude Long Endurance (LALE) applications. While they have to cope with the more challenging meteorological phenomenas of the lower atmosphere (clouds, rain, wind gusts or thermals), they generally have the advantage of lower complexity and cost, easier handling and generally faster response times through hand-launchability as required by First-Aid response teams in SAR scenarios[REF?]. However, research in small-scale solar UAVs targeting perpetual endurance has been relatively sparse, with most research focussing on conceptual design studies without extensive flight experience, e.g. \cite{Morton_ICRA2013}. However, in 2005, Cocconi's SoLong \cite{Cocconi_SoLong} performed a continuous 48 hours flight using solar power and thermal-updraft hunting. In addition, Noth \cite{Noth_PhD} presents the conceptual design methods, realization and experimental flight results of the 3.2m wing span ``SkySailor'' airplane, which demonstrated a 27 hours solar-powered continuous flight without the use of thermals in 2008. 
++stefan phd thesis somewhere
+
+\subsection{Contributions of this paper}
+This paper aims to extend the work of \cite{Cocconi_SoLong,Noth_PhD} by presenting AtlantikSolar, a solar-powered LALE-UAV with a wing span of 5.6m designed towards more robust multi-day operation capabilities while providing the option to use a visual\&infrared sensor systems and on-board computation ressources developed at ETH Zurich. The contribution of the paper lies in presenting the complete development cycle from conceptual design to actual testing and missions, or more specifically
+  
+ \begin{enumerate}
+\item The application and extension of the conceptual design approach in \cite{Noth_PhD,Leutenegger_JIRS} towards more robust multi-day flight under sub-optimal meteorological conditions
+\item The realization of the conceptual design results in the UAV hardware, i.e. structure, low-level electronics \& avionics 
+\item The development of onboard EKF state estimation algorithms and PID with non-linear guidance flight control methods
+\item The discussion of flight test results including long-endurance flight (up to 12hrs) and mapping results during examplary Search-And-Rescue missions.
+\end{enumerate}
+
++ picture of AtlantikSolar in flight
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION2: CONCEPTUAL DESIGN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{CONCEPTUAL DESIGN}
+\subsection{Methodology} \label{sec:ConceptualDesignMethodology}
+The conceptual design methodology for solar-powered UAVs used in this paper was developed at ETH Zurich by \cite{Noth_PhD,Leutenegger_JIRS} and is briefly summarized below. To analyze flight performance and a potential perpetual flight capability, the energy input/output-balance needs to be modeled. The total required electrical power
+\begin{equation} \label{eqn:P_out}
+P_{out,nom}=\frac{P_{level}}{\eta_{prop}}+P_{av}+P_{pld}
+\end{equation}
+consists of the required electrical propulsion power for level-flight $\frac{P_{level}}{\eta_{prop}}$ , where $\eta_{prop}$ includes propeller, gearbox, motor, and motor-controller efficiency, and the necessary avionics and payload power $P_{av}$ and $P_{pld}$. The aircraft is assumed to fly at the airspeed of minimum sink rate and thus minimum power consumption, i.e. its aerodynamic level-flight power is
+\begin{equation} \label{eqn:P_level}
+P_{level}=\left(\frac{C_D}{C_L^\frac{3}{2}}\right)_{min}\sqrt{\frac{2(m_{tot}g)^3}{\rho(h)A}} .
+\end{equation}
+Here, $m_{tot}$ is the total airplane mass, $g$ is the local earth gravity, $A$ is the wing area, and $rho$ is air density. The airplane lift and drag coefficients $C_L$ and $C_D$ are retrieved from 2-D airfoil simulations using XFoil \cite{Drela_XFoil}, with $C_D$ being combined with parasitic drag from the airplane fuselage and stabilizers and the induced drag  
+\begin{equation} \label{eqn:C_D}
+C_{D,ind}=\frac{c_L^2}{\pi\cdot e_0\cdot\lambda} .
+\end{equation}
+Here, $e_0\approx0.92$ is the Oswald efficiency and $\lambda$ is the wing aspect ratio. On the input side, the solar input power
+\begin{equation} \label{eqn:P_solar}
+P_{solar}=I\cdot\eta_{sc}\cdot\eta_{cbr}\cdot\eta_{mppt}
+\end{equation}
+considers the efficiency of the solar cells $\eta_{sc}$, the camber of the solar modules $\eta_{cbr}$, and the Maximum Power Point Trackers (MPPT) $\eta_{mppt}$. The solar radiation $I=I(\varphi,h,t)$ is assumed to be a function of the geographical latitude $\varphi$, the altitude $h$, and the current date and local time $t$, and is modeled as in \cite{Duffie_SolarEngineering}.
+The state equations can now be formulated in a simplified form as
+\begin{equation}\label{eqn:StateEquations}
+\begin{array}{r@{}l}
+\frac{dE_{bat}}{dt}&=P_{solar}(\varphi,h,t)-u-P_{av}-P_{pld},\\
+\frac{dh}{dt}&=\frac{\eta_{prop}\cdot u-P_{level}(h)}{m_{tot}g} .
+\end{array}
+\end{equation}
+Here, $u$ is the actual electrical power sent to the propulsion system. Simple forward integration of the state equation (\ref{eqn:StateEquations}) gives the battery state of charge (SoC) over time and thus determines the perpetual flight capability.
+
+For the design optimization, we assume that a solar-powered UAV configuration is designed for missions at and around a specific date of the year (DoY) and geographical latitude $\varphi$, and thus $\varphi$ and $DoY$ are fixed parameters. The three design parameters to be optimized are
+\begin{itemize}
+\item The wingspan $b$ and wing aspect ratio $\lambda$, which specify wing geometry and thus influence the level-power in eqn. (\ref{eqn:P_level}) and the solar input power in eqn. (\ref{eqn:P_solar}).
+\item The battery mass $m_{bat}$, which is contained in $m_{tot}$ in eqn. (\ref{eqn:P_level}) 
+\end{itemize}
+\subsection{Extension of conceptual design optimization criteria}
+
+The conceptual design tool developed in \cite{Noth_PhD,Leutenegger_JIRS} has been extended in two ways: First, it now provides the capability to perform energetic simulations of multi-day solar-powered flight, whereas before only one day-night cycle was considered. Figure XXX shows the results for incoming solar power $P_{solar}$, required power $P_{elec,tot}$, and remaining battery charge $E_{bat}$ obtained for a two day/night cycle flight. Clearly, the initial charge condition $E_{bat}$ at $t=t_{sunrise}$ for the second day is different than on the first day, which significantly reduces the required charge time until $E_{bat}=E_{bat,max}$ and leads to increased charge margins with respect to the pure one day/night-cycle simulation.
+
+Second, and more importantly, the optimization criteria are extended w.r.t \cite{Noth_PhD,Leutenegger_JIRS} to achieve more robust multi-day flight. In general, a necessary and sufficient condition for perpetual flight is that the excess time $t_{exc}>0$, i.e. that at $t=t_{eq}$ there exists remaining battery capacity to continue flight in case of e.g. cloud coverage in the morning. This is why\cite{Noth_PhD,Leutenegger_JIRS} focus on maximizing $t_{exc}$. However, a large $t_{exc}$ does not provide direct robustness against disturbances in $P_{solar}$ during the charging process(e.g. due to clouds). We thus introduce the charge margin $t_{cm}$ is introduced as the time at $E_{bat}=E_{bat,max}$ after the charge and before the discharge in the evening. In case of decreased solar power income, $t_{cm}>0$ will provide an additional margin before a decrease in excess time occurs. In contrast, when optimizing purely for $t_{exc}$, the methodology in sec. \ref{sec:ConceptualDesignMethodology} will select the largest battery size (due to the scaling of $P_{level}$ with $m_{bat}$ ) which can still be charged unter optimal conditions, but every reduction in $P_{solar}$ will directly decrease $t_{exc}$ due to only partially charged batteries and thus excessive and unused battery mass. 
+
+The overall approach for increasing robustness with respect to local disturbances in the power income and output is thus to determine the lowest acceptable $t_{exc}$ satisfying the UAV application requirements, and to then optimize the configuration for maximum $t_{cm}$.The exact procedure is as follows:
+\begin{itemize}
+\item Choose the nominal operating latitude $\varphi$, the nominal Day-of-Operation $DoY_{nom}$, and the outermost days where perpetual UAV endurance is required $DoY_{min,max}$
+\item Obtain $t_{night,min}$ and $t_{night,max}$ for the range of $DoY_{min,nom,max}$ from \cite{Duffie_SolarEngineering}. 
+\item The required excess time $t_{exc,req}$ is now the sum of 
+\begin{itemize}
+	\item $t_{exc,DoY} = t_{night,max}-t_{night,min}$
+	\item $t_{exc,Clouds}$, to allow a margin for clouds in the morning or evening
+	\item $t_{exc,P_{level}}$, to allow a margin for increased power consumption e.g. caused by downdrafts or uncertainties in estimating $P_{level}$
+\end{itemize}
+\item Perform the design analysis given the methodology in sec. \ref{sec:ConceptualDesignMethodology} for $DoY(t_{night}=t_{night,min})$. Pre-select the subset \S of configurations satisfying $t_{exc}>t_{exc,req}$.
+\item Within S, choose the configuration Si with the largest $t_{cm}$, taking into account UAV-specific further constraints on the design parameters $b$,$lambda$, or $m_{bat}$.
+\end{itemize}
+
+This conceptual design methodology is applied below. An alternative conceptual design approach utilizing a weighed version of $t_{exc}$ and $t_{cm}$ is proposed in \cite{Morton_ICRA2013}. 
+
+
+
+
+
+
+
+
+The goal of the following conceptual design methodology is to design for increased multi-day flight robustness, which for a solar-powered UAV depends on the distribution of power income and required level-flight power output over the day. This energy balance is influenced by global parameters such as the Day of the year (DoY) and the geographical latitude $\varphi$, but also by local and less predictable phenomenas such as clouds or winds. As we assume that a solar-powered UAV configuration is designed for missions at and around a specific time of the year and geographical latitude, we'll keep these parameters fixed and will instead focus on increasing robustness w.r.t.this time- and space-wise local detoriation in the meteorological conditions. More specifically, we will consider
+
+ \begin{itemize}
+\item The disturbed solar power income $P_{in,dist}$, as caused by various forms of clouds or fog. Lacking knowledge of the exact spatial and temporal cloud distribution, we'll assume the simple scaling $$ P_{in,dist}(t) = P_{in,nom}(t) \cdot CCF. $$ Here, $CCF=0..1$ \cite{Kimura_SolarRadAndClouds} represents the current cloud cover, i.e. the clearness of the atmosphere.
+\item The disturbed electrical power output $P_{out,dist}$. Wind downdrafts, head wind, or wind gusts may require increased propulsion or actuation power. Again, we'll assume the scaling  $$ P_{out,dist}(t) = P_{out,nom}(t) \cdot OPF, $$ with OPF representing the Output power factor.
+\end{itemize}
+
+ -general perpetual endurance capability is expressed by t\_exc (possible if t\_exc>0). However, t\_exc is prone to two disturbances:
+ robustness must exist w.r.t. two disturbances: P\_Output disturbance and P\_Input disturbance.
+ -> show charge curve graphics
+ Explain(a simplified) POutput and PInput distrubance on this graphic. Name them (a) nominal (b) distrubed POutput (c) disturbed PInput.
+ Show margins tCM and tEXC, explain what covers which disturbance. Similar to what Morton proposes. Say that t\_exc is what finally decides about 24hours capability, but t\_cm is also needed because... Optimizing for max t\_exc does NOT optimize w.r.t robustness.
+ Say Noth and ... only considered endurance/tEXC, thus mainly and directly covered POutput-disturbance (e.g. during night). Could do this because perfect weather conditions (No input disturbance) could be assumed.
+ 
+ ... some notes:
+ One optimal (good t\_cm, reasonable t\_exc), one only t\_exc optimized (t\_cm=0). Bad conditions-> compare to this in figure?
+ t\_exc is robustness against longer nights/more power consumption at night (and bad conditions in morning/evening). t\_cm is robustness against bad meteorological conditions during whole day and/or increased power consumption during day. -> We need a mixture of both, and how much we want to optimize exactly w.r.t the two depends on our confidence in the underlying performances. Power consumptino can be tested quite well, but meteo-conditions can not -> t\_cm very important, because t\_exc will then stay the same. If t\_cm is zero, no margin against bad meteo conditions. t\_exc should however still be on the order of some hours( we select t\_exc>~3hours), because this is how long clouds in morning/evening could/might cause P\_Solar~0. Also, minSoC>0.1, as this is limit for Go-Around-Operations.
+ - ``with improvements in P\_Input and P\_Output disturbance rejection''
+ - optimizing only towards t\_exc will cause the method to select largest E\_bat which still results in full charge under the specific conditions
+ 
+ \subsection{Application of Conceptual Design methodology}
+ design variables wingspan, aspect ratio, battery mass (solar cell area, efficiency, e\_spec\_bat, etc fixed.)
+ Optimize P\_elec\_tot, P\_level, P\_Solar\_In -> this will optimize t\_cm and t\_exc. Give basic relationships between P\_XXX and the design variables. 
+  - Mention that Noth\& Leutenegger have the full model description, which is implemented in matlab and uses xfoil.
+    + include parameter table, both of assumptions (e.g. E\_specific\_battery) as well as final optimized parameters (e.g. wing-span, whatever)
+     - altitude changes omitted for clarity and because not sure whether they can be effectuated; although these can bring performance increases as shown in [Leutenegger some REF]
+ 
+ \subsection{( Results)}
+   - generalized results (a) t\_excess vs lat and mbat and stuff and (b) SoC margin w.r.t. cloud coverage factor and turbulence factor. Comparison to ``old'' results (simply optimized w.r.t. t\_exc)
+   - Specific results (airframe results) for our requirements: wingspan, size, weight (as a result from the last section).
+  
+\section{DETAILED DESIGN AND REALIZATION}
+
+(a) real hardware / Airframe design
+  - Structure / how realized
+  - CAD Model of
+  	- whole plane
+  	- structure in wings
+  	- avionics installation \&implementation
+   - Energy System: Bats\&Solar Power
+   - weight distribution table (single parts, or better per component?)
+(b) Propulsion
+  - Propeller. Motor.
+  - Test bench measurements?
+(c) avionics
+ + Overview Flowchart of components and interaction.
+   - sensors and drivers
+   - autopilot / Pixhawk
+   - gps \& stuff
+(d) payload
+  - VI Sensor [ref to VI-sensor paper; ref to Leutenegger thesis?]
+(e) comparison to conceptual design.
+  - mass
+   - power (why not optimal: e.g. because optimal CD/CL\^1.5 assumed, but this has a) to be met in average and b) even then fluctuations as seen in flight tests are on the order of 2-3 degrees in AOA or +/- 1m/s, so this will never be met perfectly.
+
+Onboard state estimation \& control
+ - State estimation -> REF to stefan\&Amir paper
+ - System Identification \& Modelling
+ - Control using PID,  outer loops TECS \& L1 (Ref to OMLAS MED paper, also saying that there is future technologies which are being developed).
+ - Full pre-flight verification in HIL
+ 
+ (f) preliminary / low level results
+  - control:   - SE\&Control: PID performance over various trim points. PID computational requirements (low!)
+  - state estimation
+   - power efficiency curves. P\_level from Test flights.
+ 
+ \section{EXPERIMENTAL RESULTS}
+ 
+ [make this large, cause this is the main contribution?]
+
+  - Power System
+  - 12hrs battery powered flight -> power efficiency
+  - 12hrs sensor flight -> with mppts for sure
+  - 24hrs day/night flight
+  - mapping missions in ICARUS. REF to Separate paper??? Yes, but only once both are accepted.
+    
+ Other (TBD)
+  - Meteo planning? Nope. only mention as side note.
+  - Regulations? Nope. only mention as side note.
+   
+\section{CONCLUSIONS}
+
+A conclusion section is not required. Although a conclusion may review the main points of the paper, do not replicate the abstract as the conclusion. A conclusion might elaborate on the importance of the work or suggest applications and extensions. 
+
+CHECK AT END:
+ - all references (especially: urls, capitalization)
+
+\addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
+                                  % on the last page of the document manually. It shortens
+                                  % the textheight of the last page by a suitable amount.
+                                  % This command does not take effect until the next page
+                                  % so it should come on the page before the last. Make
+                                  % sure that you do not shorten the textheight too much.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{APPENDIX}
+
+Appendixes should appear before the acknowledgment.
+
+\section*{ACKNOWLEDGMENT}
+
+The preferred spelling of the word �acknowledgment� in America is without an �e� after the �g�. Avoid the stilted expression, �One of us (R. B. G.) thanks . . .�  Instead, try �R. B. G. thanks�. Put sponsor acknowledgments in the unnumbered footnote on the first page.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{plain}
+\bibliography{refs/refs_SolarUAVs}
+
+\end{document}

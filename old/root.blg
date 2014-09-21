@@ -1,0 +1,23 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: root.aux
+The style file: plain.bst
+Database file #1: refs/refs_SolarUAVs.bib
+You're missing a field part---line 35 of file refs/refs_SolarUAVs.bib
+ :  year=
+ :       ''2013''
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 82 of file refs/refs_SolarUAVs.bib
+ : 
+ : %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field part---line 87 of file refs/refs_SolarUAVs.bib
+ :     author=
+ :            ''John A. Duffie, William A. Beckman'',
+I'm skipping whatever remains of this entry
+Warning--to sort, need author, editor, or key in Duffie_SolarEngineering
+Warning--empty author and editor in Duffie_SolarEngineering
+Warning--empty title in Duffie_SolarEngineering
+Warning--empty publisher in Duffie_SolarEngineering
+Warning--empty year in Duffie_SolarEngineering
+Warning--empty year in Morton_ICRA2013
+(There were 3 error messages)

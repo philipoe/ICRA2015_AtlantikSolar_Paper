@@ -1,0 +1,28 @@
+\section{INTRODUCTION}
+
+ \subsection{Introduction to solar-powered UAVs}
+ When carefully designed, solar-electrically powered fixed-wing Unmanned Aerial Vehicles (UAVs) can exhibit significantly increased flight endurance over purely-electrically or even gas-powered aerial vehicles. Given certain environmental conditions and flight performance, a solar-powered UAV creates \''surplus energy\'' when observed over a full day-night cycle, i.e. it will fully recharge its batteries during the day to continue flight through the night and potentially also the following day-night cycles. Long endurance - and especially this multi-day continuous flight capability often termed \''perpetual endurance\'' - is of significant interest for large-scale mapping, observation or telecommunications relay applications as they occur in Search-And-Rescue (SAR) missions, industrial or agricultural inspection, meteorological surveys, border patrol and more \cite{NASA_Pathfinder}.
+ 
+Research in solar-powered UAVs of the High-Altitude Long Endurance (HALE) type has been going on since the 1990s \cite{Noth_PhD}. Recently, interest in employing these large-scale UAVs (wing span above 20m) as \''atmospheric satellites\'' - i.e. stationary/loitering platforms e.g. for telecommunications relay - has peaked [REF aquisitions]. Notable examples of this trend are Solara 50 [REF] and Zephyr[QinetiQ], the latter of which has already demonstrated a continuous flight of 11 days[REF QinetiQ]. In contrast, smaller scale solar-powered UAVs are mostly designed for Low-Altitude Long Endurance (LALE) applications. While they have to cope with the more challenging meteorological phenomenas of the lower atmosphere (clouds, rain, wind gusts or thermals), they generally have the advantage of lower complexity and cost, easier handling and generally faster response times through hand-launchability as required by First-Aid response teams in SAR scenarios[REF?]. However, research in small-scale solar UAVs targeting perpetual endurance has been relatively sparse, with most research focussing on conceptual design studies without extensive flight experience, e.g. \cite{Morton_ICRA2013}. However, in 2005, Cocconi's SoLong \cite{Cocconi_SoLong} performed a continuous 48 hours flight using solar power and thermal-updraft hunting. In addition, Noth \cite{Noth_PhD} presents the conceptual design methods, realization and experimental flight results of the 3.2m wing span ``SkySailor'' airplane, which demonstrated a 27 hours solar-powered continuous flight without the use of thermals in 2008. 
+%+stefan phd thesis somewhere
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{images/1_AtlantikSolarCollage}
+    \caption{The AtlantikSolar solar-powered UAV developed at ETH Zurich}
+    \label{fig:AtlantikSolarCollage}
+\end{figure}
+\subsection{Contributions of this paper}
+This paper aims to extend the work of \cite{Cocconi_SoLong,Noth_PhD} by presenting AtlantikSolar, a solar-powered LALE-UAV with a wing span of 5.6m designed towards more robust multi-day operation capabilities while providing the option to use a visual\&infrared sensor systems and on-board computation ressources developed at ETH Zurich. The contribution of the paper lies in presenting the complete development cycle from conceptual design to actual testing and missions, or more specifically
+  
+ \begin{enumerate}
+\item The application and extension of the conceptual design approach in \cite{Noth_PhD,Leutenegger_JIRS} towards more robust multi-day flight under sub-optimal meteorological conditions
+\item The realization of the conceptual design results in the UAV hardware, i.e. structure, low-level electronics \& avionics 
+\item The development of onboard EKF state estimation algorithms and PID with non-linear guidance flight control methods
+\item The discussion of flight test results including long-endurance flight (up to 12hrs) and mapping results during examplary Search-And-Rescue missions.
+\end{enumerate}
+
+%+ picture of AtlantikSolar in flight
+%1) Kostas from side
+%2) ``Aerobatic picture'' from TJ
+%3) Maybe landing picture.
+%- Make sure to include some with sensor pod

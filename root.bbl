@@ -1,0 +1,55 @@
+\begin{thebibliography}{1}
+
+\bibitem{DellaCa_BT}
+Master's thesis.
+
+\bibitem{Cocconi_SoLong}
+Alan Cocconi.
+\newblock Ac propulsion's solar electric powered solong uav.
+\newblock Technical report, AC Propulsion, 2005.
+\newblock Retrieved from
+  \url{{http://www.tu.no/migrationcatalog/2005/07/24/solong-info/binary/SoLong
+  info}}.
+
+\bibitem{NASA_Pathfinder}
+N.J. Colella and G.S. Wenneker.
+\newblock Pathfinder: Developing a solar rechargeable aircraft.
+\newblock {\em IEEE Potentials}, 15(1):18--23, 1996.
+
+\bibitem{Drela_XFoil}
+M.~Drela.
+\newblock Xfoil 6.9 user primer.
+\newblock Technical report, MIT Aero\&Astro, 2001.
+\newblock Retrieved from
+  \url{{http://web.mit.edu/drela/Public/web/xfoil/xfoil_doc.txt}}.
+
+\bibitem{Duffie_SolarEngineering}
+John~A. Duffie and William~A. Beckman.
+\newblock {\em Solar Engineering of Thermal Processes}.
+\newblock Wiley, 3rd edition, 2006.
+
+\bibitem{Kimura_SolarRadAndClouds}
+K.~Kimura and D.G. Stephenson.
+\newblock Solar radiation on cloudy days.
+\newblock Technical report, National Research Council of Canada, 1969.
+\newblock Retrieved from
+  \url{{http://web.mit.edu/parmstr/Public/NRCan/rp418.pdf}}.
+
+\bibitem{Leutenegger_JIRS}
+Stefan Leutenegger and Mathieu Jabas.
+\newblock Solar airplane conceptual design and performance estimation.
+\newblock {\em Journal of Intelligent Robot Systems}, 61:545--561, 2010.
+
+\bibitem{Morton_ICRA2013}
+Scott Morton, Luke Scharber, and Nikalaos Papanikolopoulos.
+\newblock Solar powered unmanned aerial vehicle for continuous flight:
+  Conceptual overview and optimization.
+\newblock In {\em IEEE International Conference on Robotics and Automation
+  (ICRA)}.
+
+\bibitem{Noth_PhD}
+A.~Noth.
+\newblock {\em Design of Solar Powered Airplanes for Continuous Flight}.
+\newblock PhD thesis, ETH Zurich, 2008.
+
+\end{thebibliography}
