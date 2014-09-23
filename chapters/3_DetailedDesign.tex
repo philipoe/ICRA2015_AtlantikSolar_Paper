@@ -68,12 +68,22 @@ The AtlantikSolar avionics topology is shown in Fig. \ref{fig:AtlantikSolar_Syst
   - ~5 sentences + 1 picture
   
 \subsection{State Estimation and Control Design}
-Onboard state estimation \& control
+%%%%%%%Onboard state estimation \& control					% why duplicate title?
 \subsubsection{State estimation}
 % [AMIR]
-  - brief (5 sentence) description of SE type/principle
-  - one verification plot (e.g. gps position ``ground truth'' vs. estimated position) 
-  then REF to stefan\&Amir paper
+% - brief (5 sentence) description of SE type/principle
+%  - one verification plot (e.g. gps position ``ground truth'' vs. estimated position) 
+%  then REF to stefan\&Amir paper
+The on-board state estimator based on extended Kalman filter (EKF) offers a robust estimation solution and can cope with prolonged GPS outage scenarios. It is implemented and optimized in order to grant full functionality on the on-board computation unit. 
+Successive estimations of the position, velocity, orientation (attitude and heading), QFF, gyroscopes biases, accelerometers biases and the wind vector are rendered by the state estimator. Moreover additional estimations as the sideslip angle and the angle of attack (AoA) can be derived. A set of on-board sensors as inertial measurement unit (MEMS based), dynamic and static pressure sensors, magnetic compass and GPS receiver deliver the necessary data for the state estimator.A detailed description of the state estimator can be found in  \cite{Leutenegger_MSC2014}.
+
+\begin{figure}[tb]
+    \centering
+    \includegraphics[width=\linewidth]{images/10_real_time_state_estimator_position}
+    \caption{Overhead trajectories plot of the on-board position state estimation (green) and the GPS  (black).}
+    \label{fig:real_time_state_estimator_positionl}
+\end{figure}
+
 
 \subsubsection{System Identification}
 %[DR. ALEXIS]

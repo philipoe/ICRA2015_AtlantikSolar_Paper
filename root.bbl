@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{DellaCa_BT}
 Master's thesis.
@@ -39,6 +39,11 @@ K.~Kimura and D.G. Stephenson.
 Stefan Leutenegger and Mathieu Jabas.
 \newblock Solar airplane conceptual design and performance estimation.
 \newblock {\em Journal of Intelligent Robot Systems}, 61:545--561, 2010.
+
+\bibitem{Leutenegger_MSC2014}
+Stefan Leutenegger, Amir Melzer, Kostas Alexis, and Roland Siegwart.
+\newblock Robust state estimation for small unmanned airplanes.
+\newblock In {\em IEEE Multi-conference on Systems and Control}.
 
 \bibitem{Morton_ICRA2013}
 Scott Morton, Luke Scharber, and Nikalaos Papanikolopoulos.

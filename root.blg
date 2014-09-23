@@ -5,7 +5,11 @@ You're missing a field part---line 35 of file refs/refs_SolarUAVs.bib
  :  year=
  :       ''2013''
 I'm skipping whatever remains of this entry
-You're missing a field part---line 49 of file refs/refs_SolarUAVs.bib
+You're missing a field part---line 42 of file refs/refs_SolarUAVs.bib
+ :  year=
+ :       ''2014''
+I'm skipping whatever remains of this entry
+You're missing a field part---line 56 of file refs/refs_SolarUAVs.bib
  :  author=
  :         ''Luca DellaCa'',
 I'm skipping whatever remains of this entry
@@ -14,5 +18,6 @@ Warning--empty author in DellaCa_BT
 Warning--empty title in DellaCa_BT
 Warning--empty school in DellaCa_BT
 Warning--empty year in DellaCa_BT
+Warning--empty year in Leutenegger_MSC2014
 Warning--empty year in Morton_ICRA2013
-(There were 2 error messages)
+(There were 3 error messages)
