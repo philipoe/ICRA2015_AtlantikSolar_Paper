@@ -15,7 +15,7 @@
    id="svg4676"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="5_texcRobustness.svg">
+   sodipodi:docname="5_texcRobustness.pdf">
   <defs
      id="defs4678">
     <clipPath
@@ -1438,18 +1438,6 @@
     </clipPath>
     <clipPath
        clipPathUnits="userSpaceOnUse"
-       id="clipPath31680">
-      <rect
-         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.80000001;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
-         id="rect31682"
-         width="162.54266"
-         height="181.76114"
-         x="-5.1593552"
-         y="-186.98547"
-         transform="scale(1,-1)" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
        id="clipPath31694">
       <rect
          style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.80000001;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
@@ -1472,6 +1460,18 @@
          style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.80482244;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
          transform="scale(1,-1)" />
     </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath32918">
+      <rect
+         y="-186.98264"
+         x="-5.1565108"
+         height="184.36134"
+         width="162.53697"
+         id="rect32920"
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.80568779;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
+         transform="scale(1,-1)" />
+    </clipPath>
   </defs>
   <sodipodi:namedview
      inkscape:document-units="mm"
@@ -1480,9 +1480,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.4559706"
-     inkscape:cx="153.55324"
-     inkscape:cy="567.1175"
+     inkscape:zoom="4.9119411"
+     inkscape:cx="250.0587"
+     inkscape:cy="685.83585"
      inkscape:current-layer="layer1"
      id="namedview4680"
      showgrid="false"
@@ -3279,7 +3279,7 @@
        transform="matrix(1.25,0,0,-1.25,51.198961,462.77518)"
        inkscape:label="ink_ext_XXXXXX"
        id="g30574"
-       clip-path="url(#clipPath31680)">
+       clip-path="url(#clipPath32918)">
       <g
          transform="scale(0.1,0.1)"
          id="g30576">
@@ -8514,13 +8514,13 @@
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        x="103.01362"
-       y="246.94806"
+       y="247.76241"
        id="text18091-94-5"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan18093-1-8"
          x="103.01362"
-         y="246.94806"
+         y="247.76241"
          style="font-size:12px;font-style:normal;-inkscape-font-specification:Sans">b)</tspan></text>
     <text
        xml:space="preserve"
@@ -8537,25 +8537,25 @@
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="272.89798"
+       x="273.50873"
        y="37.814884"
        id="text18091-94-5-5"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan18093-1-8-2"
-         x="272.89798"
+         x="273.50873"
          y="37.814884"
          style="font-size:12px;font-style:normal;-inkscape-font-specification:Sans">c)</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="273.91592"
+       x="272.73026"
        y="248.1187"
        id="text18091-94-5-58"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan18093-1-8-1"
-         x="273.91592"
+         x="272.73026"
          y="248.1187"
          style="font-size:12px;font-style:normal;-inkscape-font-specification:Sans">d)</tspan></text>
   </g>

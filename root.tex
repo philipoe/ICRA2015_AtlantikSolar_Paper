@@ -22,7 +22,7 @@
 %\usepackage{times} % assumes new font selection scheme installed
 \usepackage{amsmath} % assumes amsmath package installed
 %\usepackage{amssymb}  % assumes amsmath package installed
-\usepackage{url}
+\usepackage[hyphens]{url}
 \usepackage{nicefrac}
 \usepackage[loose]{units}
 
@@ -42,6 +42,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Abstract. Idea for this paper:
 
@@ -50,22 +51,21 @@ Abstract. Idea for this paper:
     - solar-powered, hand-launchable 5m-class Unmanned Aerial Vehicle with multi-day continuous flight capability combined with payload capacity for long-endurance SAR and inspection missions.
 Questions:
       - This paper = engineering paper, rest is then BASING upon this paper (use it as a ref). Is this OK? Is the chance that this will be accepted big enough? -> Yes, focus on ``complete cycle'' here, with more details in papers XXX to YYY
-
+ - We ware special : mission applications possible, long endurance, combination
 \end{abstract}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
- - We ware special : mission applications possible, long endurance, combination
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SECTION1: INTRODUCTION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{chapters/1_Introduction.tex}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % SECTION2: CONCEPTUAL DESIGN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{chapters/2_ConceptualDesign.tex}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SECTION2: DETAILED DESIGN AND REALIZATION
+% SECTION3: DETAILED DESIGN AND REALIZATION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{chapters/3_DetailedDesign.tex}
 
@@ -74,18 +74,20 @@ Questions:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{chapters/4_ExperimentalResults.tex}
 
- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% OTHER
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   
 \section{CONCLUSIONS}
-
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Mention:
   - Main lessons learned / summarize main points of paper
  - Future work
  
-CHECK AT END:
- - all references (especially: urls, capitalization)
+ %TODOs:
+ % - table references point at section, not at table number itself!
+ 
+%CHECK AT END:
+% - all references (especially: urls, capitalization)
+% - Check all equations
+
 
 \addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
                                   % on the last page of the document manually. It shortens
@@ -113,7 +115,7 @@ The preferred spelling of the word �acknowledgment� in America is without an
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\bibliographystyle{plain}
-\bibliography{refs/refs_SolarUAVs}
+\bibliographystyle{IEEEtran}
+\bibliography{refs/refs_SolarUAVs,refs/refs_PhilippOePapers,refs/refs_AllOthers}
 
 \end{document}

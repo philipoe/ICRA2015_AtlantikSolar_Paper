@@ -1,96 +1,120 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{DETAILED DESIGN AND REALIZATION}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-AtlantikSolar (Figs. \ref{fig:AtlantikSolarCollage} and \ref{fig:CAD_AtlantikSolarFull}) is a solar-powered Low-Altitude Long-Endurance(LALE) Unmanned Aerial Vehicle designed for perpetual flight at $\varphi=45°$ geographical latitude from April 21\textsuperscript{st} to August 21\textsuperscript{st}. It was designed and built at ETH Zurich as a lightweight high aspect ratio airplane to achieve minimum sink rate. Although its design is mostly dictated by the requirement for low power consumption, it does provide the option to use visual\&infrared sensor systems and on-board computation ressources in an autonomous operation mode for use in search and rescue or industrial inspection applications. The airplane design is summarized in table \ref{tab:DetailedDesignParameters}. Figure \ref{fig:AtlantikSolar_SystemOverview} presents an overview over the aircraft components topology.
+AtlantikSolar (Fig. \ref{fig:AtlantikSolarCollage}) is a solar-powered Low-Altitude Long-Endurance(LALE) UAV designed and built at ETH Zurich for perpetual flight at $\varphi=45°$ geographical latitude from April 21\textsuperscript{st} to August 21\textsuperscript{st}. Although its design is mostly dictated by the requirement for low level-flight power consumption, it provides means to mount an advanced optical\&infrared sensor pod developed at ETH Zurich for use in autonomous search and rescue or industrial inspection missions. The airplane airframe characteristics are summarized in table \ref{tab:DetailedDesignParameters}. An overview over the airplane system topology is given in Fig. \ref{fig:AtlantikSolar_SystemOverview}.
 
-\begin{figure}[tb]
+\begin{figure}[h]
     \centering
-    \includegraphics[width=\linewidth]{images/6_CAD_AtlantikSolarFull}
-    \caption{The AtlantikSolar UAV features a conventional T-tail configuration with 1 motor, two ailerons, an all-moving elevator and a rudder for actuation.}
-    \label{fig:CAD_AtlantikSolarFull}
+    \includegraphics[width=\linewidth]{images/10_CAD_AtlantikSolarAvionics_Combined}
+    \caption{Left: Wing structure with integrated batteries and solar cells. Right: Main avionics layout inside the airplane.}
+    \label{fig:CAD_AtlantikSolarStructureAndAvionics}
 \end{figure}
+%\begin{figure}[tb]
+%    \centering
+%    \includegraphics[width=\linewidth]{images/6_CAD_AtlantikSolarFull}
+%    \caption{The AtlantikSolar UAV features a conventional T-tail configuration with 1 motor, two ailerons, an all-moving elevator and a rudder for actuation.}
+%    \label{fig:CAD_AtlantikSolarFull}
+%\end{figure}
 
 \begin{table}
-\label{tab:DetailedDesignParameters}
 \caption{AtlantikSolar design characteristics}
+\label{tab:DetailedDesignParameters}
 \begin{center}
 \begin{tabular}{l l}
 Wing span & 5.65$\unit{m}$\\
 \hline Wing chord& 0.305$\unit{m}$\\
-\hline Length& \\
-\hline Height&\\
+\hline Length& 2.03\unit{m}\\
+\hline Height&0.45\unit{m}\\
 \hline Mass& 7.36$\unit{kg}$\\
 \hline Battery mass& 3.52$\unit{kg}$\\
 \hline Wing loading&4.28$\unitfrac{kg}{m^2}$\\
-\hline Stall speed& 8.1$\unitfrac{m}{s}$ TBD\\
+\hline Stall speed& 8.1$\unitfrac{m}{s}$\\
 \end{tabular}
 \end{center}
 \end{table}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{UAV Platform Design}
-\subsubsection{Airframe and hardware}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The structure of AtlantikSolar is built in a traditional rib-spar construction method. The wing (Fig. \ref{fig:CAD_AtlantikSolarStructure}) consists of an inner cylindrical carbon-fibre spar to resist torsional wing loads. Four carbon-fibre belts of trapezoidal and laterally-varying cross-section are located around the spar to optimally resist bending loads and to provide maximum wing stiffness to protect the solar cells on the wings. Equally-spaced balsa-wood ribs and the kevlar-reinforced wing leading edge provide structural support for the non-load-carrying outer wing surface. The horizontal and vertical tail planes are constructed in a similar fashion.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Airframe}\label{secsec:Airframe and hardware}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The structure of AtlantikSolar is built in a traditional rib-spar construction method (Fig. \ref{fig:CAD_AtlantikSolarStructureAndAvionics}). The wing's main element is an inner cylindrical carbon-fibre spar to resist torsional wing loads. Four carbon-fibre belts of trapezoidal and laterally-varying cross-section are attached to the spar to optimally resist bending loads and to provide maximum wing stiffness to structurally unload the wing surface and especially the solar cells. The main wing can be disassembled into three wing pieces of $b<2m$ each. The horizontal and vertical stabilizers are built as the main wing.
 
-\begin{figure}[tb]
-    \centering
-    \includegraphics[width=\linewidth]{images/7_CAD_AtlantikSolarStructure}
-    \caption{AtlantikSolar's wing structure, integrated batteries and solar cells.}
-    \label{fig:CAD_AtlantikSolarStructure}
-\end{figure}
-
-The cylindrical wing spar contains a total of 60 cylindrical Lithium-Ion battery cells to optimally distribute the battery mass in a ``span loader'' concept. An additional 12 batteries can be added inside the outer wings to optimize the aircraft for a specific application. The Li-Ion cells are Panasonic NCR18650b high energy density (243Wh/kg) industrial cells.They are connected in a 6S (22.2V) configuration and provide $E_{bat,max}=850Wh$ at $m_{bat}=3.5kg$. The solar modules are seamlessly embedded into the upper wing surface to avoid premature flow separation. They feature a total of 88 SunPower C60 cells with a measured module-level efficiency of $\eta_{sm}=0.20$, an areal density of $k_{sm}=590g/m^2$ and a maximum power output of 275W at $\varphi=45°$ on June21\textsuperscript{st}. Modules featuring SunPower E60 cells with a verified module-level efficiency of $eta_sm=0.23$ are currently being integrated.
-
-The propulsion system features a foldable carbon-fibre propeller with $D=66cm$ and 60cm pitch that was specifically developed to achieve $\eta_{propeller}=82\%$ at the nominal operating point of $F_{propeller}=2.4N$ at $v=8.5\unitfrac{m}{s}$. The propeller is driven by a 5:1 reduction-ratio planetary gearbox, a RS-E Strecker 260.20 brushless DC motor with $k_V=570RPM/V$ and a Kontronik Koby 55 LV motor controller. The propulsion system delivers a maximum electrical power of $P_{prop,max}=450W$. The actuation system consists of four Volz DA-15N servos that drive the two ailerons, the all-moving elevator and the rudder. To guarantee reliable multi-day flight, the Volz actuators were successfully bench-tested throughout a simulated continuous 30-day flight \cite{DellaCa_BT}.
-%mention wind tunnel, lab motor test stand tests? Only if space left...
-
-\subsubsection{Avionics}
-
-The AtlantikSolar avionics topology is shown in Fig. \ref{fig:AtlantikSolar_SystemOverview} and an integration snapshot is presented in Fig. \ref{fig:9_CAD_AtlantikSolarAvionics}. Multiple sensors are centered around a Pixhawk PX4 Autopilot - an open source and open hardware project initiated at ETH Zurich - with a Cortex M4F microprocessor running at 168Mhz and featuring 192kB RAM. For state estimation (section XXX), an ADIS 16448 10-axis Inertial Measurement Unit (IMU), a u-Blox LEA-6H GPS receiver, and a Sensirion SDP600 differential pressure (i.e. airspeed) sensor are used. The SDP600 airspeed sensor has been chosen due to its low relative error of less than 5\% at airspeeds of 8m/s, which is necessary to closely control the airspeed to the airspeed with minimum required power $P_{out}$. Commands are received through a 433Mhz telemetry link for medium ranges, or through a long-range IRIDIUM-based satellite communication link that also serves as a backup in case of primary telemetry link failure. The airplane implements a fully manual RC-command fallback mode in case of a severe autopilot failure. Night operations are possible due to four on-board high-power LEDs.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Energy Generation and Storage}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The cylindrical wing spars are fitted with 72 cylindrical high energy-density industrial Lithium-Ion battery cells (Panasonic NCR18650b, 243Wh/kg) to optimally distribute the battery mass in a ``span loader'' concept. The cells are connected in a 6S (22.2V) configuration and provide $E_{bat,max}=850Wh$ at $m_{bat}=3.5kg$. The solar modules feature a total of 88 SunPower C60 cells with a measured module-level efficiency of $\eta_{sm}=0.20$, an areal density of $k_{sm}=590g/m^2$ and a maximum power output of 275W at $\varphi=45°$ on June 21\textsuperscript{st}. Modules featuring SunPower E60 cells with a measured \cite{Sunier_EPFLSolarModules} $\eta_{sm}=0.23$ are currently being integrated. The solar modules are seamlessly embedded in the upper wing surface to avoid premature flow separation.
 
 \begin{figure}[tb]
     \centering
-   % \includegraphics[width=\linewidth]{images/8_AtlantikSolar_Avionics}
-     \includegraphics[width=\linewidth]{images/8b_AtlantikSolar_Avionics}
+     \includegraphics[width=\linewidth]{images/8_AtlantikSolar_Avionics}
     \caption{AtlantikSolar system overview. For clarity, voltage lines from the autopilot to connected devices (5.0V and 3.3V) are omitted.}
     \label{fig:AtlantikSolar_SystemOverview}
 \end{figure}
 
-\begin{figure}[tb]
-    \centering
-    \includegraphics[width=\linewidth]{images/9_CAD_AtlantikSolarAvionics}
-    \caption{Avionics components and their placement inside AtlantikSolar.}
-    \label{fig:9_CAD_AtlantikSolarAvionics}
-\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Actuation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The propulsion system features a foldable custom built carbon-fibre propeller with diameter $D=66cm$ and pitch $H=60cm$. It is driven by a 5:1 reduction-ratio planetary gearbox, a RS-E Strecker 260.20 brushless DC motor with $k_V=570RPM/V$ and a Kontronik Koby 55 LV motor controller at up to $P_{prop,max}=450W$ electrical input power. The actuation system consists of four Volz DA-15N servos that drive the two ailerons, the all-moving elevator and the rudder. To guarantee reliable multi-day flight, the Volz actuators were successfully bench-tested throughout a simulated continuous 30-day flight \cite{DellaCa_BT}.
+%mention wind tunnel, lab motor test stand tests? Only if space left...
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Avionics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The avionics installation (Figs. \ref{fig:AtlantikSolar_SystemOverview} and \ref{fig:CAD_AtlantikSolarStructureAndAvionics}) is centered around a Pixhawk PX4 Autopilot - an open source and open hardware project initiated at ETH Zurich - with a Cortex M4F microprocessor running at 168Mhz and featuring 192kB RAM. For attitude estimation (Sec. \ref{secsec:StateEstimation}), an ADIS 16448 10-axis Inertial Measurement Unit (IMU), a u-Blox LEA-6H GPS receiver, and a Sensirion SDP600 differential pressure sensor are used. The SDP600 airspeed sensor exhibits less than 5\% error at airspeeds of 8m/s, which is essential to closely control the airspeed to the minimum required power $P_{out}$ state. Both a 433Mhz medium-range telemetry link and a long-range IRIDIUM-based satellite backup link are integrated. The airplane implements a fully manual RC-command fall-back mode in case of a severe autopilot failure. Night operations are possible due to four on-board high-power indicator LEDs.
+
+%\begin{figure}[tb]
+%    \centering
+%    \includegraphics[width=\linewidth]{images/9_CAD_AtlantikSolarAvionics}
+%    \caption{Avionics components and their placement inside AtlantikSolar.}
+%    \label{fig:9_CAD_AtlantikSolarAvionics}
+%\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Payload}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % [THOMAS]
-  - VI Sensor [ref to VI-sensor paper; ref to Leutenegger thesis?]
-  - ~5 sentences + 1 picture
+The capabilities of the AtlantikSolar are augmented by a sensor and processing unit which may be mounted beneath the wing. It incorporates a \emph{visual-inertial sensor system} \cite{nikolic2014synchronized} and a small form factor computer based on a Intel Atom processor. The former consists of a processing board, an IMU as well as two cameras - one for thermal imaging using long-wavelength infrared (LWIR) and one for conventional imaging using the visible light - and allows accurate real-time SLAM. The latter is intended for high-level path planning and equipped with WiFi communication to transmit a video feed to the ground.
+% + Figure
   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{State Estimation and Control Design}
-Onboard state estimation \& control
-\subsubsection{State estimation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{State Estimation} \label{secsec:StateEstimation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % [AMIR]
   - brief (5 sentence) description of SE type/principle
   - one verification plot (e.g. gps position ``ground truth'' vs. estimated position) 
   then REF to stefan\&Amir paper
-
-\subsubsection{System Identification}
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{System Identification} \label{sec:SystemID}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %[DR. ALEXIS]
  - System Identification \& Modelling
  
- \subsubsection{Control}
- %[PHILIPP writes this, DR. ALEXIS checks this]
- - Control using PID,  outer loops TECS \& L1 (Ref to OMLAS MED paper, also saying that there is future technologies which are being developed).
- - Full pre-flight verification in HIL
+ \input{chapters/3_DetailedDesign_SystemID}
  
-\subsection{Preliminary Results}
-%[PHILIPP]
-%if not in the sections before
-  - control:   - SE\&Control: PID performance over various trim points. PID computational requirements (low!)
-  - state estimation
-  - solar system functioning
-   - power efficiency curves. P\_level from Test flights.
-   - potentially comparison to conceptual design 
-   	- power (why not optimal: e.g. because optimal CD/CL\^1.5 assumed, but this has a) to be met in average and b) even then fluctuations as seen in flight tests are on the order of 2-3 degrees in AOA or +/- 1m/s, so this will never be met perfectly.
-   	- actual mass vs. mass models?
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \subsubsection{Control}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %[PHILIPP writes this, DR. ALEXIS checks this]
+
+\begin{figure}[tb]
+    \centering
+     \includegraphics[width=\linewidth]{images/11_ControlScheme/ControlScheme}
+    \caption{Control Scheme implemented for AtlantikSolar.}
+    \label{fig:ControlScheme}
+\end{figure}
+
+AtlantikSolar features autonomous navigation including loitering through user-defined waypoints. The whole control structure (Fig. \ref{fig:ControlScheme}) is pre-tuned using the identified system model (Sec. \ref{sec:SystemID}), then functionally tested in an X-Plane 10 Hardware-In-the-Loop (HIL) simulation and finally refined in extensive flight tests. For inner-loop control, our baseline-solution is a set of cascaded PID controllers: The Stability Augmentation System (SAS) applies rate-damping to shape the airplane's frequency response, while the Control Augmentation System (CAS) applies proportional-integral feedback to track roll angle $\phi$ and pitch angle $\theta$. Flight tests show that due to AtlantikSolar's high wingspan and thus high inertia ($I_z$ and $I_x$ especially), coordinated turn control is essential to soften adverse yaw and to achieve the no-sideslip yaw rate $r=\frac{g\cdot \sin(\phi)}{v_{air}}$. To avoid overload of the highly optimized structure, output limiters and an over-speed protection are applied. In addition, Gain-Scheduling with respect to the dynamic pressure $q=\frac{1}{2}\rho v^{2}_{air}$ is employed. Waypoint following is realized through a $\mathcal{L}_1$ non-linear navigation scheme whose detailed integration into our control structure is described in \cite{Oettershagen_MED14_L1MPC}. Altitude and airspeed control are performed by an extended version of the Total Energy Control System (TECS) in the Pixhawk Autopilot\cite{PixhawkWebsite}: First, a slew rate constraint on the reference altitude $h_{ref}$ has been integrated to reach smoother altitude control at pre-definable climb and sink rates, which is especially important for low propulsion-power to weight-ratio UAVs such as AtlantikSolar. Second, we've implemented ``thermal compliance'': In an updraft, the standard TECS implementation will decrease $\theta_{ref}$ to decrease the altitude if $h>h_{ref}$. To allow gaining potential energy from a thermal, we perform gain-scheduling on $k_{SW}$ (the TECS pitch loop ``speed-weight'' parameter), to make TECS use $\theta_{ref}$ fully and only for airspeed control and $u_{Throt}$ only for altitude control. When at $h>h_{ref}$, the plane will thus keep $\theta_{ref}=\theta_{ref}(t)$  such that $v(t)=v_{ref}(t)$ and will gradually disable the motor, potentially gaining altitude for strong thermals. We also implement altitude protections, i.e. full throttle is forced for $h<h_{min}$, at $h>h_{max}$ we re-schedule $k_{SW}$ to gradually allow a pitch-down and thus altitude decrease again, and at $h>h_{max}+50m$ the controller automatically engages the spoilers for maximum descend rate. The inner PID-based pitch- and roll control loops are executed at a sampling period of $T_{SAS,CAS}=0.01s$, while the high-level $\mathcal{L}_1$\&TECS controllers run with $T_{\mathcal{L}_1,TECS}=0.05s$. Given these settings, the full controller requires less than 4\% CPU load, 5KB of RAM and 47KB Flash memory and is thus computationally lightweight when compared to other Pixhawk applications (see \cite{Oettershagen_MED14_L1MPC}) such as the state estimation. The whole control application is designed to be modular, and in addition to the PID-baseline-solution more sophisticated approaches like model-predictive control \cite{Oettershagen_MED14_L1MPC} and failure-tolerant controllers \cite{Mosimann_FT} for inner loop control have been implemented and flown on test planes.
+
+% Verification plots:
+% - Test at what winds and what performance (e.g. during loitering for power measurements -> very good tracking)
+% - Later: show waypoint tracking (not loitering!) with altitude change for control (\&State Estimator) operation verification. Alternatively: Show this in the ICARUS test paths ...
+% - show spoiler operation and thermal compliance operation?
