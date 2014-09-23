@@ -1,6 +1,6 @@
 %	This subsection overviews the system identification methods employed for AtlantikSolar
 
-Towards aiding the control synthesis procedure, a simplified linear state--space representation of the UAV dynamics was also derived based on recorded flight data and frequency--domain system identification methods. For non--aggressive maneuvering and around level flight, linear models may capture the vehicle response for small perturbations around a given equilibrium. Decoupling the longitudinal and lateral axis the dynamics of a UAV may take the following form~\cite{dorobantu2011frequency,OMLAS_MED_2014}: 
+Towards aiding the control synthesis procedure, a simplified linear state--space representation of the UAV dynamics was also derived based on recorded flight data and frequency--domain system identification methods. For non--aggressive maneuvering and around level flight, linear models may capture the vehicle response for small perturbations around a given equilibrium. Decoupling the longitudinal and lateral axis the dynamics of a UAV may take the following form~\cite{dorobantu2011frequency,OMLAS_MED_14}: 
 
 \small
 \begin{eqnarray}\label{LON_DYN}
@@ -10,9 +10,10 @@ Towards aiding the control synthesis procedure, a simplified linear state--space
 \normalsize
 where $u,w,q,\theta$ correspond to the body $x$--axis, $z$--axis velocities, the pitch rate and the pitch angle respectively, $u_{elev}$ corresponds to the elevator deflection and
 
-\scriptsize
+\footnotesize
+
 \begin{eqnarray}
-\mathbf{M}_{lon} &=& \begin{bmatrix}
+\mathbf{M}_{lon} &=& \begin{bmatrix}
 m & 0 & 0 & 0\\ 
 0 & m & 0 & 0\\ 
 0 & 0 & I_y & 0\\ 
@@ -36,7 +37,7 @@ where $m$ is the mass, $I_y$ the inertia around the body $y$--axis, $W_e,\theta_
 
 Similarly, for the lateral dynamics the model takes the following form:
 
-\small
+\small
 \begin{eqnarray}\label{LAT_DYN}
  \mathbf{M}_{lat}\dot{\mathbf{x}}_{lat} &=& \mathbf{A}^\prime_{lat}\mathbf{x}_{lat}+\mathbf{B}^\prime_{lat}u_{elev} \\ \nonumber
  \mathbf{x}_{lat} &=& \left[v~p~r~\phi \right]^T
@@ -44,7 +45,7 @@ Similarly, for the lateral dynamics the model takes the following form:
 \normalsize
 where $v,p,r,\phi$ correspond to the body $y$--axis velocity, the roll and yaw rates and roll angle respectively, $u_{ail}$ is the aileron deflection, $u_{rud}$ is the rudder deflection and
 
-\scriptsize
+\footnotesize
 \begin{eqnarray}
 \mathbf{M}_{lat} &=& \begin{bmatrix}
 m & 0 & 0 & 0\\ 
@@ -52,7 +53,7 @@ m & 0 & 0 & 0\\
 0 & -I_{xz} & I_z & 0\\ 
 0 & 0 & 0 & 1
 \end{bmatrix},\\ \nonumber 
-\mathbf{A}^\prime_{lat} &=& \begin{bmatrix}
+\mathbf{A}^\prime_{lat} &=& \begin{bmatrix}
 Y_v & Y_p + mW_e & Y_r-mU_e & mg\cos\theta_e\\ 
 L_v & L_p & L_r & 0\\ 
 N_v & N_p & N_r & 0 \\ 
@@ -67,14 +68,16 @@ N_{u_{ail}} & N_{u_{rud}}\\
 \normalsize
 where $I_x$ the inertia around the body $x$--axis, $I_{xz}$ the cross--inertia term of the body $x,z$--axes and the elements of $\mathbf{M}_{lat},\mathbf{A}^\prime_{lat}$ and $\mathbf{B}^\prime_{lat}$ form the stability and control derivatives of the UAV lateral dynamics. 
 
+The frequency--domain system identification framework employed is based on the objective function and guidelines outlined in~\cite{TISCHLER_BOOK} and its specifics were further detailed in our previous work~\cite{OMLAS_MED_14}. Employing the same methods, models of sufficient fidelity were derived for the AtlantikSolar UAV. Figure~\ref{SysID_LonValid} depicts validation plots for the case of the longitudinal dynamics. As shown models of sufficient fidelity are derived while the increased coherence values indicate that the linearity assumption within such a conservative subset of the flight envelope is effectively correct. 
+
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htbp]
 %\begin{center}
 \centering
-  \includegraphics*[width=8.25cm]{images/AtlantikSolar_SysID_Lon_Valid.eps}
+  \includegraphics*[width=8.5cm]{images/AtlantikSolar_SysID_Lon_Valid.eps}
 %\end{center}
-\caption{Longitudinal subsystem system identification validation plot. }
+\caption{Longitudinal subsystem system identification validation plot. The angle of attack $\alpha$ is computed based on the experimental and model--predicted values for $u$ and $w$. Results for a $1\textrm{h}$ are shown along with a closer look to $60\textrm{sec}$ of the flight and the coherence values $\gamma$ between the experimental $\alpha,q,\theta$ and the predicted $\hat{\alpha},\hat{q},\hat{theta}$. }
 \label{SysID_LonValid}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
