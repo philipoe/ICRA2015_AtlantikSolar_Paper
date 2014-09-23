@@ -77,8 +77,8 @@ The avionics installation (Figs. \ref{fig:AtlantikSolar_SystemOverview} and \ref
 \subsubsection{Payload}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % [THOMAS]
-  - VI Sensor [ref to VI-sensor paper; ref to Leutenegger thesis?]
-  - ~5 sentences + 1 picture
+The capabilities of the AtlantikSolar are augmented by a sensor and processing unit which is mounted beneath the wing. It incorporates a \emph{visual-inertial sensor system} [1] and a small form factor computer based on a Intel Atom processor. The former consists of a processing board, an IMU as well as two cameras - one for thermal imaging using long-wavelength infrared (LWIR) and one for conventional imaging using the visible light - and allows accurate real-time SLAM. The latter is intended for high-level path planning and equipped with WiFi communication to transmit a video feed to the ground.
+% + Figure
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{State Estimation and Control Design}
@@ -105,7 +105,14 @@ The avionics installation (Figs. \ref{fig:AtlantikSolar_SystemOverview} and \ref
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  %[PHILIPP writes this, DR. ALEXIS checks this]
 
-\input{chapters/3_DetailedDesign_Control}
+\begin{figure}[tb]
+    \centering
+     \includegraphics[width=\linewidth]{images/11_ControlScheme/ControlScheme}
+    \caption{Control Scheme implemented for AtlantikSolar.}
+    \label{fig:ControlScheme}
+\end{figure}
+
+AtlantikSolar features autonomous navigation including loitering through user-defined waypoints. The whole control structure (Fig. \ref{fig:ControlScheme}) is pre-tuned using the identified system model (Sec. \ref{sec:SystemID}), then functionally tested in an X-Plane 10 Hardware-In-the-Loop (HIL) simulation and finally refined in extensive flight tests. For inner-loop control, our baseline-solution is a set of cascaded PID controllers: The Stability Augmentation System (SAS) applies rate-damping to shape the airplane's frequency response, while the Control Augmentation System (CAS) applies proportional-integral feedback to track roll angle $\phi$ and pitch angle $\theta$. Flight tests show that due to AtlantikSolar's high wingspan and thus high inertia ($I_z$ and $I_x$ especially), coordinated turn control is essential to soften adverse yaw and to achieve the no-sideslip yaw rate $r=\frac{g\cdot \sin(\phi)}{v_{air}}$. To avoid overload of the highly optimized structure, output limiters and an over-speed protection are applied. In addition, Gain-Scheduling with respect to the dynamic pressure $q=\frac{1}{2}\rho v^{2}_{air}$ is employed. Waypoint following is realized through a $\mathcal{L}_1$ non-linear navigation scheme whose detailed integration into our control structure is described in \cite{Oettershagen_MED14_L1MPC}. Altitude and airspeed control are performed by an extended version of the Total Energy Control System (TECS) in the Pixhawk Autopilot\cite{PixhawkWebsite}: First, a slew rate constraint on the reference altitude $h_{ref}$ has been integrated to reach smoother altitude control at pre-definable climb and sink rates, which is especially important for low propulsion-power to weight-ratio UAVs such as AtlantikSolar. Second, we've implemented ``thermal compliance'': In an updraft, the standard TECS implementation will decrease $\theta_{ref}$ to decrease the altitude if $h>h_{ref}$. To allow gaining potential energy from a thermal, we perform gain-scheduling on $k_{SW}$ (the TECS pitch loop ``speed-weight'' parameter), to make TECS use $\theta_{ref}$ fully and only for airspeed control and $u_{Throt}$ only for altitude control. When at $h>h_{ref}$, the plane will thus keep $\theta_{ref}=\theta_{ref}(t)$  such that $v(t)=v_{ref}(t)$ and will gradually disable the motor, potentially gaining altitude for strong thermals. We also implement altitude protections, i.e. full throttle is forced for $h<h_{min}$, at $h>h_{max}$ we re-schedule $k_{SW}$ to gradually allow a pitch-down and thus altitude decrease again, and at $h>h_{max}+50m$ the controller automatically engages the spoilers for maximum descend rate. The inner PID-based pitch- and roll control loops are executed at a sampling period of $T_{SAS,CAS}=0.01s$, while the high-level $\mathcal{L}_1$\&TECS controllers run with $T_{\mathcal{L}_1,TECS}=0.05s$. Given these settings, the full controller requires less than 4\% CPU load, 5KB of RAM and 47KB Flash memory and is thus computationally lightweight when compared to other Pixhawk applications (see \cite{Oettershagen_MED14_L1MPC}) such as the state estimation. The whole control application is designed to be modular, and in addition to the PID-baseline-solution more sophisticated approaches like model-predictive control \cite{Oettershagen_MED14_L1MPC} and failure-tolerant controllers \cite{Mosimann_FT} for inner loop control have been implemented and flown on test planes.
 
 % Verification plots:
 % - Test at what winds and what performance (e.g. during loitering for power measurements -> very good tracking)
