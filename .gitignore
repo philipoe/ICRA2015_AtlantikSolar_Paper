@@ -1,6 +1,7 @@
 root.aux
 root.blg
-root.log
+*.log
 root.bbl
 root.synctex.gz
 root.pdf
+*-eps-converted-to.pdf

@@ -11,30 +11,42 @@ A total of 79 hours of flight testing have been performed in 46 flights with the
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Verification of required level flight power}
+\subsubsection{Measurement of required level flight power} \label{secsec:LevelFlightPower}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %[Philipp]
 
-    - [AS-S1 TFD\#6 F1] power efficiency curves. P\_level from Test flights. Comparison to conceptual design. Describe why power consumption not optimal: e.g. because optimal CD/CL\^1.5 assumed, but this has a) to be met in average and b) even then fluctuations as seen in flight tests are on the order of 2-3 degrees in AOA or +/- 1m/s, so this will never be met perfectly.
+\begin{figure}[tb]
+    \centering
+     \includegraphics[width=\linewidth]{images/PowerMeasurements/PowerMeasurements}
+    \caption{AtlantikSolar's ``power curve'', i.e. the total required level power $P_{out}$ vs. airspeed $v$, measured in constant-altitude loitering mode in calm air with $v_{ref}=const=8...15m/s$ in $T=200s$ intervals. (a) Raw data, (b) $P_{out}$ averaged over 1000 neighboring airspeed data points and (c) $P_{out}$ averaged within the $T=200s$ intervals.} 
+    \label{fig:PowerMeasurements}
+\end{figure}
+
+To verify the energetic UAV modeling in Sec. \ref{sec:ConceptualDesignMethodology}, constant-altitude loitering flights performed in calm air (see Fig. \ref{fig:12hFlight} of Sec. \ref{sec:12hFlight}) were used to record a power curve (Fig. \ref{fig:PowerMeasurements}) for AtlantikSolar. Although a significant portion of noise remains, it can be stated that $P_{Out}^{\,min}\approx42...48W$ at $v_{air}^{\,opt}=9.7\pm0.5m/s$. The modeling through (\ref{eqn:P_out})-(\ref{eqn:C_D}) yielded $P_{out}=44.5W$ for AtlantikSolar. This correspondance means that - on the output power side - the predicted 24h-flight capability and excess time are verified. However, it should be noted that the low power consumption from Fig. \ref{fig:PowerMeasurements} was only reached after significant re-iterations on propeller, motor- and motor-controller design through wind-tunnel and lab tests. In general, the modeling through (\ref{eqn:P_out})-(\ref{eqn:C_D}) is an absolute lower limit for power consumption as it assumes constant and undisturbed flight at minimum sink airspeed, whereas in reality deviations in airspeed as well as deviations in aircraft attitude or even downdrafts can not be avoided.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Autopilot operation in challenging wind conditions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
-
+%Might be too much space-wise. Would show control however.
 	- gneerell: What weather conditions: Gusts? Wind speeds? Thermal up and downdrafts. all very important at low flight speed.
 	e.g. during loitering for power measurements -> very good tracking
 	- [AS-S1 TF\#5 F1] show spoiler operation and thermal compliance operation?
 	- Later: show waypoint tracking in the ICARUS test paths ...  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Continuous 12hour Flight}
+\subsection{Continuous 12-hour Flight} \label{sec:12hFlight}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   
 %[PHILIPP]
-   - [AS-S1 TFD\#7]:
-   - focus on battery performance. Say that even more possible (mention some results from the lab tests)
-   - explain how much autonomous, under which conditions.
-  
+\begin{figure}[tb]
+    \centering
+     \includegraphics[width=\linewidth]{images/12hFlight}
+    \caption{A 12h 22min flight performed by AtlantikSolar to test the endurance under night-flight conditions, i.e. without solar power income. The red-dotted lines are (a) the mean of the output power (59W) over the whole flight in the power plot and (b) the battery voltage at maximum/minimum state-of-charge in the voltage plot.} 
+    \label{fig:12hFlight}
+\end{figure}
+
+As a first step towards demonstrating multi-day flights, AtlantikSolar performed a 12 hour 22 minutes (276km ground distance) simulated night flight (Fig. \ref{fig:12hFlight}), i.e. with the solar power system completely disabled. After launch at 7.15am ($t=0h$), the flight logs show autonomous constant-altitude loitering to perform the power measurements of Sec. \ref{secsec:LevelFlightPower} and a switch to autopilot-assisted (SAS\&CAS) modes for additional testing at $t=4.1h$. The whole flight is marked by severe thermal down- and updrafts with altitude gains up to 350m, with the significant difference between airspeed and GPS-velocity showing horizontal winds on the order of the airspeed itself (up to 11m/s) for $t>4h$. Although the average flight power consumption of 59W is higher than determined in Sec. \ref{secsec:LevelFlightPower}, the batteries still show a remaining state of charge (SoC) of ca. 23\% (corresponding to $V_{Bat}$=20.6V) after landing. Simple extrapolation using the remaining SoC shows that flight times of $t_{endurance}=15h$ (and even more in calmer conditions) are possible solely on batteries. Crossing the night for the full operating range defined in Sec. \ref{sec:ConceptDesignApplication} and involving $t_{night}^{\,max}=10.5h$ on April 21\textsuperscript{st} thus seems possible with excess times of $t_{exc}>4.5h$. This supports the findings of the conceptual design. 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Mapping Flights in Search and Rescue scenarios}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
