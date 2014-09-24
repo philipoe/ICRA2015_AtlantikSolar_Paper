@@ -2,7 +2,7 @@
 \section{DETAILED DESIGN AND REALIZATION}\label{sec:detailed_design}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-AtlantikSolar (Fig. \ref{fig:AtlantikSolarCollage}) is a solar-powered Low-Altitude Long-Endurance(LALE) UAV designed and built at ETH Zurich for perpetual flight at $\varphi=45°$ geographical latitude from April 21\textsuperscript{st} to August 21\textsuperscript{st}. Although its design is mostly dictated by the requirement for low level-flight power consumption, it provides means to mount an advanced optical\&infrared sensor pod developed at ETH Zurich for use in autonomous search and rescue or industrial inspection missions. The airplane airframe characteristics are summarized in table \ref{tab:DetailedDesignParameters}. An overview over the airplane system topology is given in Fig. \ref{fig:AtlantikSolar_SystemOverview}.
+AtlantikSolar(Fig. \ref{fig:AtlantikSolarCollage}) is a solar-powered Low-Altitude Long-Endurance(LALE) UAV designed and built at ETH Zurich for perpetual flight at $\varphi=45\degree$ geographical latitude from April 21\textsuperscript{st} to August 21\textsuperscript{st}. Although its design is mostly dictated by the requirement for low level-flight power consumption, it provides means to mount an advanced optical and infrared sensor pod developed at ETH Zurich for use in autonomous search and rescue or industrial inspection missions. The airplane airframe characteristics are summarized in table \ref{tab:DetailedDesignParameters}. An overview over the airplane system topology is given in Fig. \ref{fig:AtlantikSolar_SystemOverview}.
 
 \begin{figure}[h]
     \centering
@@ -58,7 +58,7 @@ The cylindrical wing spars are fitted with 72 cylindrical high energy-density in
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Actuation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The propulsion system features a foldable custom built carbon-fibre propeller with diameter $D=66cm$ and pitch $H=60cm$. It is driven by a 5:1 reduction-ratio planetary gearbox, a RS-E Strecker 260.20 brushless DC motor with $k_V=450RPM/V$ and a Kontronik Koby 55 LV motor controller at up to $P_{prop,max}=450W$ electrical input power. The actuation system consists of four Volz DA-15N servos that drive the two ailerons, the all-moving elevator and the rudder. To guarantee reliable multi-day flight, the Volz actuators were successfully bench-tested throughout a simulated continuous 30-day flight \cite{DellaCa_BT}.
+The propulsion system features a foldable custom built carbon-fibre propeller with diameter $D=66cm$ and pitch $H=60cm$. It is driven by a 5:1 reduction-ratio planetary gearbox, a RS-E Strecker 260.20 brushless DC motor with $k_V=450RPM/V$ and a Kontronik Koby 55 LV motor controller at up to $P_{prop,max}=450W$ electrical input power. The actuation system consists of four Volz DA-15N servos that drive the two ailerons, the all-moving elevator and the rudder. To guarantee reliable multi-day flight, the Volz actuators were successfully operated in a servo test-bed for 30 days under flight-equivalent loads \cite{DellaCa_BT}.
 %mention wind tunnel, lab motor test stand tests? Only if space left...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -66,18 +66,11 @@ The propulsion system features a foldable custom built carbon-fibre propeller wi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The avionics installation (Figs. \ref{fig:AtlantikSolar_SystemOverview} and \ref{fig:CAD_AtlantikSolarStructureAndAvionics}) is centered around a Pixhawk PX4 Autopilot - an open source and open hardware project initiated at ETH Zurich - with a Cortex M4F microprocessor running at 168Mhz and featuring 192kB RAM. For attitude estimation (Sec. \ref{secsec:StateEstimation}), an ADIS 16448 10-axis Inertial Measurement Unit (IMU), a u-Blox LEA-6H GPS receiver, and a Sensirion SDP600 differential pressure sensor are used. The SDP600 airspeed sensor exhibits less than 5\% error at airspeeds of 8m/s, which is essential to closely control the airspeed to the minimum required power $P_{out}$ state. Both a 433Mhz medium-range telemetry link and a long-range IRIDIUM-based satellite backup link are integrated. The airplane implements a fully manual RC-command fall-back mode in case of a severe autopilot failure. Night operations are possible due to four on-board high-power indicator LEDs.
 
-%\begin{figure}[tb]
-%    \centering
-%    \includegraphics[width=\linewidth]{images/9_CAD_AtlantikSolarAvionics}
-%    \caption{Avionics components and their placement inside AtlantikSolar.}
-%    \label{fig:9_CAD_AtlantikSolarAvionics}
-%\end{figure}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Payload}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % [THOMAS]
-The capabilities of the AtlantikSolar are augmented by a sensor and processing unit which may be mounted beneath the wing. It incorporates a \emph{visual-inertial sensor system} \cite{nikolic2014synchronized} and a small form factor computer based on a Intel Atom processor. The former consists of a processing board, an IMU as well as two cameras - one for thermal imaging using long-wavelength infrared (LWIR) and one for conventional imaging using the visible light - and allows accurate real-time SLAM. The latter is intended for high-level path planning and equipped with WiFi communication to transmit a video feed to the ground.
+The capabilities of the AtlantikSolar are augmented by a sensor and processing unit which may be mounted beneath the wing. It incorporates a \emph{visual-inertial sensor system} \cite{nikolic2014synchronized} and a small form factor computer based on an Intel Atom processor. The former consists of a processing board, an IMU as well as two cameras - one for thermal imaging using long-wavelength infrared (LWIR) and one for conventional imaging using the visible light - and allows accurate real-time SLAM\cite{Leutenegger_PhD}. The latter is intended for high-level path planning and equipped with WiFi-communication to transmit a video feed to the ground.
 \begin{figure}[!htb]
   \begin{center}
   \def\svgwidth{\columnwidth}
@@ -94,10 +87,6 @@ The capabilities of the AtlantikSolar are augmented by a sensor and processing u
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{State Estimation} \label{secsec:StateEstimation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% [AMIR]
-% - brief (5 sentence) description of SE type/principle
-%  - one verification plot (e.g. gps position ``ground truth'' vs. estimated position) 
-%  then REF to stefan\&Amir paper
 The on-board state estimator based on extended Kalman filter (EKF) offers a robust estimation solution and can cope with prolonged GPS outage scenarios. It is implemented and optimized in order to grant full functionality on the on-board computation unit. 
 Successive estimations of the position, velocity, orientation (attitude and heading), QFF, gyroscopes biases, accelerometers biases and the wind vector are rendered by the state estimator. Moreover additional estimations as the sideslip angle and the angle of attack (AoA) can be derived. A set of on-board sensors as inertial measurement unit (MEMS based), dynamic and static pressure sensors, magnetic compass and GPS receiver deliver the necessary data for the state estimator.A detailed description of the state estimator can be found in  \cite{Leutenegger_MSC2014}.
   
