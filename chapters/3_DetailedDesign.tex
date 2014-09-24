@@ -78,7 +78,14 @@ The avionics installation (Figs. \ref{fig:AtlantikSolar_SystemOverview} and \ref
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % [THOMAS]
 The capabilities of the AtlantikSolar are augmented by a sensor and processing unit which may be mounted beneath the wing. It incorporates a \emph{visual-inertial sensor system} \cite{nikolic2014synchronized} and a small form factor computer based on a Intel Atom processor. The former consists of a processing board, an IMU as well as two cameras - one for thermal imaging using long-wavelength infrared (LWIR) and one for conventional imaging using the visible light - and allows accurate real-time SLAM. The latter is intended for high-level path planning and equipped with WiFi communication to transmit a video feed to the ground.
-% + Figure
+\begin{figure}[!htb]
+  \begin{center}
+  \def\svgwidth{\columnwidth}
+  \includesvg{pod}
+  \end{center}
+  \caption[Modular sensing and processing unit.]{Modular sensing and processing unit that can be mounted under the AtlantikSolar wing.}
+  \label{f:03_sensor_pod}
+\end{figure}
   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{State Estimation and Control Design}

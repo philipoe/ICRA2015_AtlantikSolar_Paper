@@ -1,0 +1,35 @@
+%#####################################
+% lestefan: include pstricks'ed stuff. annoyingly, this will only work on apple. how can we distinguish OS?
+\newcommand{\executeiffilenewer}[3]{%
+\ifnum\pdfstrcmp{\pdffilemoddate{#1}}%
+{\pdffilemoddate{#2}}>0%
+{\immediate\write18{#3}}\fi%
+}
+\newcommand{\includesvg}[1]{%
+\IfFileExists{/Applications/Inkscape.app/Contents/Resources/bin/inkscape} % aha, it's an apple
+{
+\IfFileExists{./images/#1.pdf}{
+\executeiffilenewer{./images/#1.svg}{./images/#1.pdf}%
+{/Applications/Inkscape.app/Contents/Resources/bin/inkscape -z -D --file=./images/#1.svg %
+--export-pdf=./images/#1.pdf --export-latex}%
+}  
+{
+\immediate\write18{/Applications/Inkscape.app/Contents/Resources/bin/inkscape -z -D --file=./images/#1.svg %
+--export-pdf=./images/#1.pdf --export-latex}
+}
+}
+{
+%else:
+\IfFileExists{./images/#1.pdf}{
+\executeiffilenewer{./images/#1.svg}{./images/#1.pdf}%
+{inkscape -z -D --file=./images/#1.svg %
+--export-pdf=./images/#1.pdf --export-latex}%
+}
+}
+{
+\immediate\write18{inkscape -z -D --file=./images/#1.svg %
+--export-pdf=./images/#1.pdf --export-latex}
+}
+\import{./images/}{#1.pdf_tex}%
+}
+%#####################################
