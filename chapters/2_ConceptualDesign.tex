@@ -60,18 +60,26 @@ t_{exc}&=\frac{E_{bat}(t=t_{eq})}{P_{out}^{\,nom}} \Big| P_{solar}(t>t_{sr})=0
 with ``power-equality time'' $t_{eq}=t(P_{solar}^{\,nom}=P_{out}^{\,nom})$ in the morning. This means that at $t=t_{eq}$ there has to exist remaining battery capacity to continue flight e.g. in case of cloud coverage in the morning. This is why the authors in \cite{Noth_PhD,Leutenegger_JIRS} focus on maximizing $t_{exc}$. However, a large $t_{exc}$ does not provide direct robustness against disturbances in $P_{solar}$ e.g. due to clouds during the charging process. In contrast, when optimizing purely for $t_{exc}$, the methodology in Sec. \ref{sec:ConceptualDesignMethodology} will select the largest battery size (due to the scaling of $P_{level}$ with $m_{bat}$ ) which can still be fully charged under optimal conditions, but every reduction in $P_{solar}$ will directly decrease $t_{exc}$ due to only partially charged batteries. We thus introduce the charge margin $t_{cm}$ as the time margin between achieving the full charge $E_{bat}=E_{bat}^{\,max}$ and restart of the discharge in the evening. In case of decreased solar power income, $t_{cm}>0$ will provide an additional margin before a decrease in excess time occurs.
 
 The overall approach for increasing robustness with respect to local disturbances in the power income and output is thus to determine the lowest acceptable $t_{exc}$ satisfying the UAV application requirements, and to then optimize the configuration for $t_{cm}$. The exact procedure applied here is:
-\begin{enumerate}
-\item Choose the nominal operating latitude $\varphi$ and Day-of-Operation $DoY^{nom}$, and the outermost days where perpetual UAV endurance is required $DoY^{min,max}$
-\item Obtain $t_{night}^{\,min}$ and $t_{night}^{\,max}$ for the range of $DoY=[DoY^{min},DoY^{max}]$ from \cite{Duffie_SolarEngineering}. 
-\item The required excess time $t_{exc,req}$ is now the sum of 
-\begin{itemize}
-	\item $t_{exc,DoY} = t_{night}^{\,max}-t_{night}^{\,min}$
-	\item $t_{exc,clouds}$, to allow a margin for clouds in the morning or evening
-	\item $t_{exc,P_{level}}$, to allow a margin for increased power consumption e.g. caused by downdrafts or uncertainties in estimating $P_{level}$
-\end{itemize}
-\item Perform the design analysis given the methodology in Sec. \ref{sec:ConceptualDesignMethodology} for $DoY(t_{night}=t_{night}^{\,min})$. Pre-select the subset $\mathcal{S}$ of configurations satisfying $t_{exc}>t_{exc,req}$.
-\item Within $\mathcal{S}$, allow for a set of intermediate configurations $\mathcal{S}_i$ to take into account UAV-specific constraints on $b$, $\lambda$, or $m_{bat}$. Then choose the final configuration $\mathcal{S}_f$  from $\mathcal{S}_i$ to obtain the largest charge margin $t_{cm}$.
-\end{enumerate}
+\vspace{-3ex}
+\begin{algorithm}[htp]
+  \SetAlgoLined\DontPrintSemicolon
+  \SetKwFunction{proc}{}
+  \SetKwProg{myproc}{}{}{}
+  \myproc{} %\proc{}
+  {
+  \nl Choose nominal operating latitude $\phi$ and Day of Operation $DoY^{nom}$ and the outermost days where perpetual UAV endurance is required $DoY^{\min,\max}$ \;
+  \nl For the range of $DoY=[DoY^{\min},DoY^{\max}]$ from~\cite{Duffie_SolarEngineering}, obtain $t_{night}^{\min},~t_{night}^{\max}$; \;
+  \nl The required excess time $t_{exc,req}$ is now the sum of;  \; 
+  \pushline
+  \nonl \scriptsize$\bullet$\normalsize~  $t_{exc,DoY} = t_{night}^{\,max}-t_{night}^{\,min}$; \;
+  \nonl \scriptsize$\bullet$\normalsize~  $t_{exc,clouds}$, to allow a margin for clouds in the morning or evening; \;
+  \nonl \scriptsize$\bullet$\normalsize~  $t_{exc,P_{level}}$, to allow a margin for increased power consumption e.g. caused by downdrafts or uncertainties in estimating $P_{level}$; \;
+  \popline \nl 
+  \nl Perform the design analysis given the methodology in Sec.~\ref{sec:ConceptualDesignMethodology} for $DoY(t_{night}=t_{night}^{\,min})$. Pre-select the subset $\pazocal{S}$ of configurations satisfying $t_{exc}>t_{exc,req}$  \;
+  \nl Within $\pazocal{S}$, allow for a set of intermediate configurations $\pazocal{S}_i$ to take into account UAV-specific constraints on $b$, $\lambda$, or $m_{bat}$. Then choose the final configuration $\pazocal{S}_f$  from $\pazocal{S}_i$ to obtain the largest charge margin $t_{cm}$; % \;
+ }
+  %\caption{Inor}
+\end{algorithm}
 
 This conceptual design methodology is applied below. An alternative conceptual design approach utilizing a weighted version of $t_{exc}$ and $t_{cm}$ is proposed in \cite{Morton_ICRA2013}. 
 
