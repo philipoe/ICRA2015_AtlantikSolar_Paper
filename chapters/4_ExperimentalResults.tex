@@ -27,11 +27,15 @@ To verify the energetic UAV modeling in Sec. \ref{sec:ConceptualDesignMethodolog
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Autopilot operation in challenging wind conditions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
-%Might be too much space-wise. Would show control however.
-	- gneerell: What weather conditions: Gusts? Wind speeds? Thermal up and downdrafts. all very important at low flight speed.
-	e.g. during loitering for power measurements -> very good tracking
-	- [AS-S1 TF\#5 F1] show spoiler operation and thermal compliance operation?
-	- Later: show waypoint tracking in the ICARUS test paths ...  
+
+\begin{figure}[tb]
+    \centering
+     \includegraphics[width=\linewidth]{images/ControlTestFlight/ControlTestFlight.pdf}
+    \caption{Fully autonomous flight in constant altitude-reference loitering mode under the influence of significant thermal updrafts and winds. The autopilot engages spoilers and motor as required to respect altitude limits $h_{min}$ and $h_{max}$ in its thermal compliance mode. The right plot shows a zoomed-in section of the left plot.} 
+    \label{fig:ControlTestFlight}
+\end{figure}
+
+Challenging wind conditions strain a UAV's state estimation and control capabilities, and an excerpt from fully autonomous verification flights of AtlantikSolar under these conditions is thus shown in Fig. \ref{fig:ControlTestFlight}. The aircraft is in constant altitude-reference loitering mode, and upon hitting a thermal at $t=9760s$ it correctly switches off the motor while gaining altitude due to the implemented thermal compliance (Sec. \ref{sec:Control}). When the altitude is above the user-prescribed $h_{max}$, negative pitch reference is prescribed and successfully tracked. The aircraft however continues to gain altitude due to the significant updraft strenght. From $t=10052s$ on, the autopilot thus engages the spoilers at $h>h_{max}+50$ to achieve maximum descent rate. The aircraft's altitude begins to stabilize and the spoilers are disengaged at $t=10357s$. After a total of 20minutes of unpowered flight, the altitude stabilizes around $h=h_{ref}$ again, with the controller now commanding high throttle due to the following thermal downdraft. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Continuous 12-hour Flight} \label{sec:12hFlight}
