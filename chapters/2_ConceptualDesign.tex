@@ -46,11 +46,11 @@ For the design optimization, we assume that a solar-powered UAV configuration is
 The conceptual design tool developed in \cite{Noth_PhD,Leutenegger_JIRS} has been extended in two ways: First, it now provides the capability to perform energetic simulations of multi-day solar-powered flight, whereas before only one day-night cycle was considered. Fig. \ref{fig:EnergySimulation} shows the results for incoming solar power $P_{solar}$, required power $P_{out}$, and remaining battery charge $E_{bat}$ obtained for a two day/night cycle flight. Clearly, the initial charge condition $E_{bat}$ at time of sunrise $t_{sr}=min(t(P_{solar}>0))$ for the second day is different than on the first day, which significantly reduces the required charge time until $E_{bat}=E_{bat}^{\,max}$ and leads to increased charge margins with respect to the pure one day/night-cycle simulation. %is this paragraph really needed?
 \begin{figure}[tb]
     \centering
-    \includegraphics[width=\linewidth]{images/2_EnergySimulation}
+    \includegraphics[width=\linewidth]{images/2_EnergySimulation.pdf}
     \caption{Energetic simulation of the AtlantikSolar UAV configuration ($b=5.6m$, $\lambda=18.5$, $m_{bat}=3.5kg$), showing input and output power, battery capacity, and performance metrics excess time $t_{exc}$ and charge margin $t_{cm}$ during a 2-day flight.}
     \label{fig:EnergySimulation}
 \end{figure}
-Second, and more importantly, the optimization criteria are extended with respect to \cite{Noth_PhD,Leutenegger_JIRS} to achieve more robust multi-day flight. In general, a necessary and sufficient condition for perpetual flight is that for the excess time
+Second, and more importantly, the optimization criteria are extended with respect to \cite{Noth_PhD,Leutenegger_JIRS} to achieve more robust multi-day flight. In general, a necessary and sufficient condition for perpetual flight is that the excess time
 \begin{equation} \label{eqn:t_exc}
 \begin{array}{r@{}l}
 t_{exc}&>0\\
@@ -86,7 +86,7 @@ This conceptual design methodology is applied below. An alternative conceptual d
 \subsection{Application of Conceptual Design methodology} \label{sec:ConceptDesignApplication}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-AtlantikSolar operates at a nominal latitude of $\varphi=45°N$ and shall provide perpetual endurance within a +/-2 month window around $DoY_{nom}$=June 21\textsuperscript{st} (April 21\textsuperscript{st}-August 21\textsuperscript{st}). From \cite{Duffie_SolarEngineering}, we find $t_{night}^{\,min}=8.7h$ (June 21\textsuperscript{st}), $t_{night}^{\,max}=10.5h$(April 21\textsuperscript{st}), and thus $t_{exc,DoY}=1.80h$. We choose $t_{exc,clouds}=3.0h$ to account for three hours of full cloud coverage either on the evening or the morning and choose $t_{exc,P_{level}}=0.2\cdot t_{night,max}=2.1h$ to cover increased power consumption due to modelling errors, downdrafts or headwinds. Using $t_{exc,req}=t_{exc,DoY}+t_{exc,clouds}+t_{exc,P_{level}}$, we retrieve $t_{exc,req}=6.9h$ as the minimum required excess time for robust perpetual-flight at the given dates and locations. 
+AtlantikSolar operates at a nominal latitude of $\varphi=45\degree N$ and shall provide perpetual endurance within a +/-2 month window around $DoY_{nom}$=June 21\textsuperscript{st} (April 21\textsuperscript{st}-August 21\textsuperscript{st}). From \cite{Duffie_SolarEngineering}, we find $t_{night}^{\,min}=8.7h$ (June 21\textsuperscript{st}), $t_{night}^{\,max}=10.5h$(April 21\textsuperscript{st}), and thus $t_{exc,DoY}=1.80h$. We choose $t_{exc,clouds}=3.0h$ to account for three hours of full cloud coverage either on the evening or the morning and choose $t_{exc,P_{level}}=0.2\cdot t_{night,max}=2.1h$ to cover increased power consumption due to modelling errors, downdrafts or headwinds. Using $t_{exc,req}=t_{exc,DoY}+t_{exc,clouds}+t_{exc,P_{level}}$, we retrieve $t_{exc,req}=6.9h$ as the minimum required excess time for robust perpetual-flight at the given dates and locations. 
 
 The design methodology tool of Sec. \ref{sec:ConceptualDesignMethodology} is now applied assuming the fixed component performance parameters in Tab. \ref{tab:ConceptDesignParameters}. Fig. \ref{fig:ExcessTimeChargeMargin} shows the resulting plot for $t_{exc}$ versus the optimization variables $b$, $m_{bat}$ and $\lambda=18.5$. The subset $\mathcal{S}$ of configurations satisfying $t_{exc}>t_{exc,req}$ is the region within the blue contour-line. The optimum clearly occurs at large wingspans, however, considering an external size constraint (each of the three wing pieces of AtlantikSolar shall be $<2m$ in wing span to allow proper handling and transport), we choose $b=5.6m$.  The aspect ratio $\lambda=18.5$ is found to provide an optimum in $t_{exc}$ and also allows to seamlessly integrate the solar cells (see Sec. \ref{secsec:Airframe and hardware}) inside the wing chord. The last design choice is now $m_{bat}$, for which we seek to optimize $t_{cm}$ within the previously selected set $\mathcal{S}_i=(\mathcal{S}|b=5.6m, \lambda=18.5)$. As visible in Fig. \ref{fig:ExcessTimeChargeMargin}, $m_{bat}=3.0...7.5kg$ lie within $\mathcal{S}_i$. We choose $m_{bat}=3.5kg$ to optimize $t_{cm}$ and due to practical battery sizing constraints described in Sec. \ref{secsec:Airframe and hardware}. The selected final configuration $\mathcal{S}_f=(\mathcal{S}|m_{bat}=3.5kg, b=5.6m, \lambda=18.5)$ has an overall estimated mass of $m_{tot}=7.22kg$ and yields a predicted $t_{exc}=7.89h$ and $t_{cm}=8.38h$ for the nominal operating date and latitude.
 \begin{figure}[tb]
@@ -135,7 +135,8 @@ with $k_{OPF}$ representing the Output Power Factor.
 \end{itemize}
 \begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{images/5_texcRobustness}
+    \includegraphics[width=\linewidth]{images/5_texcRobustness/5_texcRobustness.pdf}
+    %\includegraphics[width=\linewidth]{images/old/5_texcRobustness.pdf}
     \caption{Excess time $t_{exc}$ under disturbed power input and output for the developed $b=5.6m$, $\lambda=18.5$ configuration: a) $m_{bat}$=3.5kg on June 21\textsuperscript{st} b) $m_{bat}=6.0kg$ on June 21\textsuperscript{st} c) $m_{bat}$=3.5kg on April 21\textsuperscript{st} d) $m_{bat}=6.0kg$ on April 21\textsuperscript{st} }
     \label{fig:ExcessTimeRobustness}
 \end{figure}
