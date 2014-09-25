@@ -28,6 +28,18 @@
 \usepackage{import}
 \usepackage{color}
 \usepackage{gensymb}
+\usepackage{algorithm2e}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+\let\oldnl\nl% Store \nl in \oldnl
+\newcommand{\nonl}{\renewcommand{\nl}{\let\nl\oldnl}}% Remove line number for one line
+
+\makeatletter
+\newcommand{\nosemic}{\renewcommand{\@endalgocfline}{\relax}}% Drop semi-colon ;
+\newcommand{\dosemic}{\renewcommand{\@endalgocfline}{\algocf@endline}}% Reinstate semi-colon ;
+\newcommand{\pushline}{\Indp}% Indent
+\newcommand{\popline}{\Indm\dosemic}% Undent
+\makeatother
+
 
 \input{svgtricks}
 
