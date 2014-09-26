@@ -1,6 +1,6 @@
 %	This subsection overviews the system identification methods employed for AtlantikSolar
 
-Towards aiding the control synthesis procedure, a simplified linear state--space representation of the UAV dynamics was also derived based on recorded flight data and frequency--domain system identification methods. Around level flight, linear models may capture the vehicle response for small perturbations around a given equilibrium. Decoupling the longitudinal and lateral axis, the dynamics of a UAV may take the following form~\cite{dorobantu2011frequency,OMLAS_MED_14}: 
+Towards aiding the control synthesis procedure, a simplified linear state--space representation of the UAV dynamics was derived using recorded flight data and frequency--domain system identification methods. Around level flight, linear models may capture the vehicle response for small perturbations around a given equilibrium. Decoupling the longitudinal and lateral axis, the dynamics of a UAV may take the following form~\cite{dorobantu2011frequency,OMLAS_MED_14}: 
 
 \small
 \begin{eqnarray}\label{LON_DYN}
@@ -69,7 +69,7 @@ N_v & N_p & N_r & 0 \\
 \normalsize
 where $I_x$ the inertia around the body $x$--axis, $I_{xz}$ the cross--inertia term of the $x,z$--axes and the elements of $\mathbf{M}_{lat},\mathbf{A}^\prime_{lat}$ and $\mathbf{B}^\prime_{lat}$ form the lateral stability and control derivatives. 
 
-The frequency--domain system identification framework employed is based on the objective function and guidelines outlined in~\cite{TISCHLER_BOOK} and its specifics were further detailed in our previous work~\cite{OMLAS_MED_14}. Employing the same methods, models of sufficient fidelity were derived for the AtlantikSolar UAV. Figure~\ref{SysID_LonValid} depicts validation plots for the case of the longitudinal dynamics. As shown the model matching is  are derived while the increased coherence values indicate that the linearity assumption within such a conservative subset of the flight envelope is effectively correct. 
+The frequency--domain system identification framework employed is based on the objective function and guidelines outlined in~\cite{TISCHLER_BOOK} and its specifics were further detailed in our previous work~\cite{OMLAS_MED_14}. Employing the same methods, models of sufficient fidelity were derived for the AtlantikSolar UAV. Figure~\ref{SysID_LonValid} depicts validation plots for the case of the longitudinal dynamics. As shown the model matching is  derived while the increased coherence values indicate that the linearity assumption within such a conservative subset of the flight envelope is effectively correct. 
 
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
