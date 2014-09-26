@@ -14,7 +14,7 @@ consists of the required electrical propulsion power for level-flight $\frac{P_{
 \begin{equation} \label{eqn:P_level}
 P_{level}=\left(\frac{C_D}{C_L^\frac{3}{2}}\right)_{min}\sqrt{\frac{2(m_{tot}g)^3}{\rho(h)A_{wing}}} .
 \end{equation}
-Here, $m_{tot}=m_{bat}+m_{struct}+m_{prop}+m_{sm}+m_{av}+m_{pld}$ is the total airplane mass, where structure, propulsion and solar module masses $m_{struct},m_{prop},m_{sm}$ are automatically sized according to \cite{Noth_PhD,Leutenegger_JIRS} and $m_{av},m_{pld}$ are given in table \ref{tab:ConceptDesignParameters}. The local earth gravity is designated by $g$, $A_{wing}$ is the wing area, and $rho$ is air density. The airplane lift and drag coefficients $C_L$ and $C_D$ are retrieved from 2-D airfoil simulations using XFoil \cite{Drela_XFoil}, with $C_D$ being combined with parasitic drag from the airplane fuselage and stabilizers and the induced drag  
+Here, $m_{tot}=m_{bat}+m_{struct}+m_{prop}+m_{sm}+m_{av}+m_{pld}$ is the total airplane mass, where structure, propulsion and solar module masses $m_{struct}$, $m_{prop}$, $m_{sm}$ are automatically sized according to \cite{Noth_PhD,Leutenegger_JIRS} and $m_{av}$, $m_{pld}$ are given in table \ref{tab:ConceptDesignParameters}. The local earth gravity is designated by $g$, $A_{wing}$ is the wing area, and $\rho$ is air density. The airplane lift and drag coefficients $C_L$ and $C_D$ are retrieved from 2-D airfoil simulations using XFoil \cite{Drela_XFoil}, with $C_D$ being combined with parasitic drag from the airplane fuselage and stabilizers and the induced drag  
 \begin{equation} \label{eqn:C_D}
 C_{D,ind}=\frac{c_L^2}{\pi\cdot e_0\cdot\lambda} .
 \end{equation}
@@ -83,20 +83,13 @@ The overall approach for increasing robustness with respect to local disturbance
 
 This conceptual design methodology is applied below. An alternative conceptual design approach utilizing a weighted version of $t_{exc}$ and $t_{cm}$ is proposed in \cite{Morton_ICRA2013}. 
 
-% less predictable phenomenas such as clouds or winds. 
-% local detoriation in the meteorological conditions. 
-% AtlantikSolar charge curve is shown in figure above
-% Explain(a simplified) POutput and PInput distrubance on this graphic. Name them (a) nominal (b) distrubed POutput (c) disturbed PInput. ???
-% We need a mixture of both t_exc and t_cm, and how much we want to optimize exactly w.r.t the two depends on our confidence in the underlying performances. Power consumptino can be tested quite well, but meteo-conditions can not -> t\_cm very important, because t\_exc will then stay the same. If t\_cm is zero, no margin against bad meteo conditions. t\_exc should however still be on the order of some hours( we select t\_exc>~3hours), because this is how long clouds in morning/evening could/might cause P\_Solar~0. Also, minSoC>0.1, as this is limit for Go-Around-Operations.
-% - optimizing only towards t\_exc will cause the method to select largest E\_bat which still results in full charge under the specific conditions
- 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Application of Conceptual Design methodology} \label{sec:ConceptDesignApplication}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 AtlantikSolar operates at a nominal latitude of $\varphi=45\degree N$ and shall provide perpetual endurance within a +/-2 month window around $DoY_{nom}$=June 21\textsuperscript{st} (April 21\textsuperscript{st}-August 21\textsuperscript{st}). From \cite{Duffie_SolarEngineering}, we find $t_{night}^{\,min}=8.7h$ (June 21\textsuperscript{st}), $t_{night}^{\,max}=10.5h$(April 21\textsuperscript{st}), and thus $t_{exc,DoY}=1.80h$. We choose $t_{exc,clouds}=3.0h$ to account for three hours of full cloud coverage either on the evening or the morning and choose $t_{exc,P_{level}}=0.2\cdot t_{night,max}=2.1h$ to cover increased power consumption due to modelling errors, downdrafts or headwinds. Using $t_{exc,req}=t_{exc,DoY}+t_{exc,clouds}+t_{exc,P_{level}}$, we retrieve $t_{exc,req}=6.9h$ as the minimum required excess time for robust perpetual-flight at the given dates and locations. 
 
-The design methodology tool of Sec. \ref{sec:ConceptualDesignMethodology} is now applied assuming the fixed component performance parameters in Tab. \ref{tab:ConceptDesignParameters}. Fig. \ref{fig:ExcessTimeChargeMargin} shows the resulting plot for $t_{exc}$ versus the optimization variables $b$, $m_{bat}$ and $\lambda=18.5$. The subset $\mathcal{S}$ of configurations satisfying $t_{exc}>t_{exc,req}$ is the region within the blue contour-line. The optimum clearly occurs at large wingspans, however, considering an external size constraint (each of the three wing pieces of AtlantikSolar shall be $<2m$ in wing span to allow proper handling and transport), we choose $b=5.6m$.  The aspect ratio $\lambda=18.5$ is found to provide an optimum in $t_{exc}$ and also allows to seamlessly integrate the solar cells (see Sec. \ref{secsec:Airframe and hardware}) inside the wing chord. The last design choice is now $m_{bat}$, for which we seek to optimize $t_{cm}$ within the previously selected set $\mathcal{S}_i=(\mathcal{S}|b=5.6m, \lambda=18.5)$. As visible in Fig. \ref{fig:ExcessTimeChargeMargin}, $m_{bat}=3.0...7.5kg$ lie within $\mathcal{S}_i$. We choose $m_{bat}=3.5kg$ to optimize $t_{cm}$ and due to practical battery sizing constraints described in Sec. \ref{secsec:Airframe and hardware}. The selected final configuration $\mathcal{S}_f=(\mathcal{S}|m_{bat}=3.5kg, b=5.6m, \lambda=18.5)$ has an overall estimated mass of $m_{tot}=7.22kg$ and yields a predicted $t_{exc}=7.89h$ and $t_{cm}=8.38h$ for the nominal operating date and latitude.
+The design methodology tool of Sec. \ref{sec:ConceptualDesignMethodology} is now applied assuming the fixed component performance parameters in Tab. \ref{tab:ConceptDesignParameters}. Fig. \ref{fig:ExcessTimeChargeMargin} shows the resulting plot for $t_{exc}$ versus the optimization variables $b$ and $m_{bat}$. The subset $\mathcal{S}$ of configurations satisfying $t_{exc}>t_{exc,req}$ is the region within the blue contour-line. The optimum clearly occurs at large wingspans. However, considering that we aim for a small-scale and hand-launchable configuration that allows easy transport (e.g. via disassembly of the main wing into three pieces of <2m wingspan) we choose $b=5.6m$.  The aspect ratio $\lambda=18.5$ is found to provide an optimum in $t_{exc}$ and also allows to seamlessly integrate the 125mm-wide solar cells (see Sec. \ref{secsec:Airframe and hardware}) inside the wing chord. The last design choice is now $m_{bat}$, for which we seek to optimize $t_{cm}$ within the previously selected set $\mathcal{S}_i=(\mathcal{S}|b=5.6m, \lambda=18.5)$. As visible in Fig. \ref{fig:ExcessTimeChargeMargin}, $m_{bat}=3.0...7.5kg$ lie within $\mathcal{S}_i$. We choose $m_{bat}=3.5kg$ to optimize $t_{cm}$ and due to practical battery sizing constraints described in Sec. \ref{secsec:Airframe and hardware}. The selected final configuration $\mathcal{S}_f=(\mathcal{S}|m_{bat}=3.5kg, b=5.6m, \lambda=18.5)$ has an overall estimated mass of $m_{tot}=7.22kg$ and yields a predicted $t_{exc}=7.89h$ and $t_{cm}=8.38h$ for the nominal operating date and latitude.
 \begin{figure}[tb]
     \centering
     \includegraphics[width=\linewidth]{images/3_excesstime}
@@ -105,8 +98,7 @@ The design methodology tool of Sec. \ref{sec:ConceptualDesignMethodology} is now
     \label{fig:ExcessTimeChargeMargin}
 \end{figure}
 \begin{table}[h] 
-\caption{Fixed parameters for the conceptual design}
-\label{tab:ConceptDesignParameters}
+\caption{Fixed parameters for the conceptual design} \label{tab:ConceptDesignParameters}
 \begin{center}
 \begin{tabular}{l l l}
 \hline Parameter & Value & Description\\ 

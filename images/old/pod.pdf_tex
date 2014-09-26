@@ -1,0 +1,62 @@
+%% Creator: Inkscape inkscape 0.48.3.1, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'pod.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{1018.8318936bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.35434129)%
+    \put(0,0){\includegraphics[width=\unitlength]{pod.pdf}}%
+    \put(0.00096543,0.24684785){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\tiny{Visible light cam} }}}%
+    \put(0.00096543,0.03484035){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\tiny{FLIR Tau thermal cam}}}}%
+    \put(0.23143546,0.29523214){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\tiny{COM Express Mini Card}}}}%
+    \put(0.45809501,0.34837551){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\tiny{ADIS16448 IMU}}}}%
+    \put(0.88861107,0.02908875){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\tiny{64 GB flash}}}}%
+    \put(0.77213294,0.13134136){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\tiny{VI Sensor module / FPGA}}}}%
+    \put(0.87622364,0.19516599){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\tiny{WiFi Antenna}}}}%
+    \put(0.79755929,0.25873934){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\tiny{COM Express Breakout}}}}%
+  \end{picture}%
+\endgroup%
