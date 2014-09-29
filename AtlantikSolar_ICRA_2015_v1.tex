@@ -1,0 +1,105 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%2345678901234567890123456789012345678901234567890123456789012345678901234567890
+%        1         2         3         4         5         6         7         8
+
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
+
+%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
+
+\IEEEoverridecommandlockouts                              % This command is only needed if 
+                                                          % you want to use the \thanks command
+
+\overrideIEEEmargins                                      % Needed to meet printer requirements.
+
+% See the \addtolength command later in the file to balance the column lengths
+% on the last page of the document
+
+% The following packages can be found on http:\\www.ctan.org
+\usepackage{graphicx} % for pdf, bitmapped graphics files
+\usepackage{epstopdf }
+%\usepackage{epsfig} % for postscript graphics files
+\usepackage{mathptmx} % assumes new font selection scheme installed
+\usepackage{times} % assumes new font selection scheme installed
+\usepackage{amsmath} % assumes amsmath package installed
+\usepackage{amssymb}  % assumes amsmath package installed
+\usepackage[hyphens]{url}
+\usepackage{nicefrac}
+\usepackage[loose]{units}
+\usepackage{import}
+\usepackage{color}
+\usepackage{gensymb}
+\usepackage{algorithm2e}
+\DeclareMathAlphabet{\pazocal}{OMS}{zplm}{m}{n}
+\let\oldnl\nl% Store \nl in \oldnl
+\newcommand{\nonl}{\renewcommand{\nl}{\let\nl\oldnl}}% Remove line number for one line
+
+\makeatletter
+\newcommand{\nosemic}{\renewcommand{\@endalgocfline}{\relax}}% Drop semi-colon ;
+\newcommand{\dosemic}{\renewcommand{\@endalgocfline}{\algocf@endline}}% Reinstate semi-colon ;
+\newcommand{\pushline}{\Indp}% Indent
+\newcommand{\popline}{\Indm\dosemic}% Undent
+\makeatother
+
+
+\input{svgtricks}
+
+\title{\LARGE \bf A solar-powered hand-launchable UAV for low-altitude multi-day continuous flight}
+
+\author{Philipp Oettershagen$^{1}$, Amir Melzer, Thomas Mantel, Konrad Rudin, \\ Rainer Lotz, Dieter Siebenmann, Stefan Leutenegger, Kostas Alexis and Roland Siegwart% <-this % stops a space
+\thanks{All authors are part of the Autonomous Systems Lab, Swiss Federal Institute of Technology Zurich (ETH Zurich). Leonhardstrasse 21, 8092 Zurich, Switzerland. }
+\thanks{$^{1}$ E-Mail:{\tt philipp.oettershagen@mavt.ethz.ch}}%
+\thanks{*This work was supported by the EU-FP7 research projects ICARUS and SHERPA as well as a number of project partners and generous individuals, see http://www.atlantiksolar.ethz.ch/  }% <-this % stops a space
+ }
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This paper presents the conceptual design, detailed development and flight testing of AtlantikSolar, a 5.6m-wingspan solar-powered low-altitude long-endurance (LALE) Unmanned Aerial Vehicle (UAV) designed and built at ETH Zurich. The UAV is required to provide perpetual endurance at a geographic latitude of 45\degree N in a 4-month window around June 21\textsuperscript{st}. We present and apply a conceptual design method for maximizing perpetual flight robustness with respect to local meteorological disturbances such as clouds or winds. Airframe, avionics hardware and state estimation and control method development for autonomous flight operations is described. Flight test results include a 12-hour flight relying solely on batteries to replicate night-flight conditions. In addition we present flight results from Search-And-Rescue field trials where a camera and processing pod was mounted on the aircraft to create high-fidelity 3D-maps of the simulated disaster area. 
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION1: INTRODUCTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/1_Introduction.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION2: CONCEPTUAL DESIGN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/2_ConceptualDesign.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION3: DETAILED DESIGN AND REALIZATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/3_DetailedDesign.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION4: EXPERIMENTAL RESULTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{chapters/4_ExperimentalResults.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{CONCLUSIONS}
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This paper presented the design, realization and flight testing of a solar-powered hand-launchable LALE UAV for robust (with respect to meteorological disturbances such as clouds) multi-day flight at 45\degree N geographical latitude from April 21\textsuperscript{st} to August 21\textsuperscript{st}. In-flight power measurements and a 12h 22min flight solely on batteries confirm the expected endurance and hence that flights through the night are possible. Achieving these performance results became possible through the thorough application of the presented extended conceptual design methodology along with significant engineering effort especially with respect to improving flight efficiency. Basing upon the developed UAV platform, the next steps are to demonstrate one and multiple day-night (24h/48h) flights. Next to long-endurance research, more effort will be put into implementing advanced online localization, map reconstruction and planning capabilities into the existing optical- and infrared camera pod to increase the autonomy in the Search-and-Rescue projects that the platform is involved in.
+
+\addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
+                                  % on the last page of the document manually. It shortens
+                                  % the textheight of the last page by a suitable amount.
+                                  % This command does not take effect until the next page
+                                  % so it should come on the page before the last. Make
+                                  % sure that you do not shorten the textheight too much.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs/refs_SolarUAVs,refs/refs_PhilippOePapers,refs/refs_AllOthers,refs/refs_KA}
+
+\end{document}
