@@ -16,7 +16,7 @@ consists of the required electrical propulsion power for level-flight $\frac{P_{
 \begin{equation} \label{eqn:P_level}
 P_{level}=\left(\frac{C_D}{C_L^\frac{3}{2}}\right)_{min}\sqrt{\frac{2(m_{tot}g)^3}{\rho(h)A_{wing}}} .
 \end{equation}
-Here, $m_{tot}=m_{bat}+m_{struct}+m_{prop}+m_{sm}+m_{av}+m_{pld}$ is the total airplane mass, where structure, propulsion and solar module masses $m_{struct}$, $m_{prop}$, $m_{sm}$ are automatically sized according to \cite{Noth_PhD,Leutenegger_JIRS} and $m_{av}$, $m_{pld}$ are given in table \ref{tab:ConceptDesignParameters}. The local earth gravity is designated by $g$, $A_{wing}$ is the wing area, and $\rho(h)$ is the altitude dependent air density. The airplane lift and drag coefficients $C_L$ and $C_D$ are retrieved from 2-D airfoil simulations using XFoil \cite{Drela_XFoil}, with $C_D$ being combined with parasitic drag from the airplane fuselage and stabilizers and the induced drag  
+Here, $m_{tot}=m_{bat}+m_{struct}+m_{prop}+m_{sm}+m_{av}+m_{pld}$ is the total airplane mass, where structure, propulsion and solar module masses $m_{struct}$, $m_{prop}$, $m_{sm}$ are automatically sized according to \cite{Noth_PhD,Leutenegger_JIRS} and $m_{av}$, $m_{pld}$ are given in Table~\ref{tab:ConceptDesignParameters}. The local earth gravity is designated by $g$, $A_{wing}$ is the wing area, and $\rho(h)$ is the altitude dependent air density. The airplane lift and drag coefficients $C_L$ and $C_D$ are retrieved from 2-D airfoil simulations using XFoil \cite{Drela_XFoil}, with $C_D$ being combined with parasitic drag from the airplane fuselage and stabilizers and the induced drag  
 \begin{equation} \label{eqn:C_D}
 C_{D,ind}=\frac{c_L^2}{\pi\cdot e_0\cdot\lambda} .
 \end{equation}
@@ -32,7 +32,7 @@ The state equation is now
 \frac{dh}{dt}&=\frac{\eta_{prop}\cdot u-P_{level}(h)}{m_{tot}g} .
 \end{array}
 \end{equation}
-Here, $u$ is the current electrical power sent to the propulsion system. By solving the system of differential equations in (\ref{eqn:StateEquations}), the energy stored in the batteries may be obtained and thus the perpetual flight capability of the UAV determined.
+Here, $u$ is the current electrical power sent to the propulsion system and $P_{solar}$ denotes the incoming solar power. By solving the system of differential equations in (\ref{eqn:StateEquations}), the energy stored in the batteries may be obtained and thus the perpetual flight capability of the UAV determined.
 
 For the design optimization, we assume that a solar-powered UAV configuration is designed for missions at and around a specific Date of the Year (DoY) and geographical latitude $\varphi$, thus $\varphi$ and $DoY$ are fixed. The three design parameters are a) wingspan $b$ and b) wing aspect ratio $\lambda$, which both specify wing geometry and thus influence level-power (\ref{eqn:P_level}) and solar input power (\ref{eqn:P_solar}), and c) the battery mass $m_{bat}$ contained in $m_{tot}$ in (\ref{eqn:P_level}) .
 
@@ -63,15 +63,16 @@ The overall approach for increasing robustness with respect to local power distu
   \myproc{} %\proc{}
   {
   \nl Choose nominal operating latitude $\varphi$, and Day of Operation $DoY^{nom}$ and the outermost days where perpetual UAV endurance is required $DoY^{\min,\max}$ \;
-  \nl For the range of $DoY=[DoY^{\min},DoY^{\max}]$ obtain $t_{night}^{\min},~t_{night}^{\max}$ from~\cite{Duffie_SolarEngineering}; \;
-  \nl The required excess time $t_{exc,req}$ is now the sum of;  \; 
+  \nl For the range of $DoY=[DoY^{\min},DoY^{\max}]$ obtain $t_{night}^{\min},~t_{night}^{\max}$ from~\cite{Duffie_SolarEngineering} \;
+  \nl The required excess time $t_{exc,req}$ is now the sum of  \; 
   \pushline
-  \nonl \scriptsize$\bullet$\normalsize~  $t_{exc,DoY} = t_{night}^{\,max}-t_{night}^{\,min}$; \;
-  \nonl \scriptsize$\bullet$\normalsize~  $t_{exc,clouds}$, to allow a margin for clouds in the morning or evening; \;
-  \nonl \scriptsize$\bullet$\normalsize~  $t_{exc,P_{level}}$, to allow a margin for increased power consumption e.g. caused by downdrafts or uncertainties in estimating $P_{level}$; \;
+  \nonl \scriptsize$\bullet$\normalsize~  $t_{exc,DoY} = t_{night}^{\,max}-t_{night}^{\,min}$ \;
+  \nonl \scriptsize$\bullet$\normalsize~  $t_{exc,clouds}$, to allow a margin for clouds in the morning or evening \;
+  \nonl \scriptsize$\bullet$\normalsize~  $t_{exc,P_{level}}$, to allow a margin for increased power consumption e.g. caused by downdrafts or uncertainties in estimating $P_{level}$ \;
   \popline \nl 
   \nl Perform the design analysis given the methodology in Sec.~\ref{sec:ConceptualDesignMethodology} for $DoY(t_{night}=t_{night}^{\,min})$. Pre-select the subset $\pazocal{S}$ of configurations satisfying $t_{exc}>t_{exc,req}$  \;
-  \nl Within $\pazocal{S}$, allow for a set of intermediate configurations $\pazocal{S}_i$ to take into account UAV-specific constraints on $b$, $\lambda$, or $m_{bat}$. Then choose the final configuration $\pazocal{S}_f$  from $\pazocal{S}_i$ to obtain the largest charge margin $t_{cm}$; % \;
+  \nl Within $\pazocal{S}$, allow for a set of intermediate configurations $\pazocal{S}_i$ to take into account UAV-specific constraints on $b$, $\lambda$, or $m_{bat}$. Then choose the final configuration $\pazocal{S}_f$  from $\pazocal{S}_i$ to obtain the largest charge margin $t_{cm}$ % \; 
+
  }
   %\caption{Inor}
 \end{algorithm}
@@ -84,12 +85,12 @@ This conceptual design methodology is applied below. An alternative conceptual d
 
 AtlantikSolar operates at a nominal latitude of $\varphi=45\degree N$ and shall provide perpetual endurance within a +/-2 month window around $DoY_{nom}$=June 21\textsuperscript{st} (April 21\textsuperscript{st}-August 21\textsuperscript{st}). From \cite{Duffie_SolarEngineering}, we find $t_{night}^{\,min}=8.7h$ (June 21\textsuperscript{st}), $t_{night}^{\,max}=10.5h$(April 21\textsuperscript{st}), and thus $t_{exc,DoY}=1.80h$. We choose $t_{exc,clouds}=3.0h$ to account for three hours of full cloud coverage either on the evening or the morning and choose $t_{exc,P_{level}}=0.2\cdot t_{night,max}=2.1h$ to cover increased power consumption due to modelling errors, downdrafts or headwinds. Using $t_{exc,req}=t_{exc,DoY}+t_{exc,clouds}+t_{exc,P_{level}}$, we retrieve $t_{exc,req}=6.9h$ as the minimum required excess time for robust perpetual-flight at the given dates and locations. 
 
-The design methodology tool of Sec. \ref{sec:ConceptualDesignMethodology} is now applied assuming the fixed parameters in Tab. \ref{tab:ConceptDesignParameters}. Figure \ref{fig:ExcessTimeChargeMargin} shows the resulting plot for $t_{exc}$ versus the optimization variables $b$ and $m_{bat}$. The subset $\mathcal{S}$ of configurations satisfying $t_{exc}>t_{exc,req}$ is the region within the blue contour-line. The optimum clearly occurs at large wingspans. However, considering that we aim for a small-scale and hand-launchable configuration that allows easy transport (in this case via disassembly of the main wing into three pieces of $<2m$ wingspan) we choose $b=5.6m$.  The aspect ratio $\lambda=18.5$ is found to provide an optimum in $t_{exc}$ and also allows to seamlessly integrate the 125mm-wide solar cells (see Sec. \ref{secsec:Airframe and hardware}) inside the wing chord. The last design choice is $m_{bat}$, for which we seek to optimize $t_{cm}$ within the previously selected set $\mathcal{S}_i=(\mathcal{S}|b=5.6m, \lambda=18.5)$. As visible in Fig. \ref{fig:ExcessTimeChargeMargin}, $m_{bat}=3.0...7.5kg$ lie within $\mathcal{S}_i$. We choose $m_{bat}=3.5kg$ to optimize $t_{cm}$ and due to practical battery sizing constraints described in Sec. \ref{secsec:Airframe and hardware}. The selected final configuration $\mathcal{S}_f=(\mathcal{S}|m_{bat}=3.5kg, b=5.6m, \lambda=18.5)$ yields an estimated $m_{tot}=7.22kg$, $t_{exc}=7.89h$ and $t_{cm}=8.38h$ for the nominal operating date and latitude.
+The design methodology tool of Sec. \ref{sec:ConceptualDesignMethodology} is now applied assuming the fixed parameters in Tab. \ref{tab:ConceptDesignParameters}. Figure \ref{fig:ExcessTimeChargeMargin} shows the resulting plot for $t_{exc}$ versus the optimization variables $b$ and $m_{bat}$. The subset $\pazocal{S}$ of configurations satisfying $t_{exc}>t_{exc,req}$ is the region within the blue contour-line. The optimum clearly occurs at large wingspans. However, considering that we aim for a small-scale and hand-launchable configuration that allows easy transport (in this case via disassembly of the main wing into three pieces of less than $2m$ wingspan) we choose $b=5.6m$.  The aspect ratio $\lambda=18.5$ is found to provide an optimum in $t_{exc}$ and also allows to seamlessly integrate the 125mm-wide solar cells (see Sec. \ref{secsec:Airframe and hardware}) inside the wing chord. The last design choice is $m_{bat}$, for which we seek to optimize $t_{cm}$ within the previously selected set $\pazocal{S}_i=(\pazocal{S}|b=5.6m, \lambda=18.5)$. As visible in Fig. \ref{fig:ExcessTimeChargeMargin}, $m_{bat}=3.0...7.5kg$ lie within $\pazocal{S}_i$. We choose $m_{bat}=3.5kg$ to optimize $t_{cm}$ and due to practical battery sizing constraints described in Sec. \ref{secsec:Airframe and hardware}. The selected final configuration $\pazocal{S}_f=(\pazocal{S}|m_{bat}=3.5kg, b=5.6m, \lambda=18.5)$ yields an estimated $m_{tot}=7.22kg$, $t_{exc}=7.89h$ and $t_{cm}=8.38h$ for the nominal operating date and latitude.
 \begin{figure}[tb]
     \centering
     \includegraphics[width=\linewidth]{images/3_excesstime}
     \includegraphics[width=\linewidth]{images/4_chargemargin}
-    \caption{Excess time $t_{exc}$ (top) and charge margin $t_{cm}$ (bottom) vs. $b$ and $m_{bat}$, all at $\lambda=18.5$. The configuration subset $\mathcal{S}$ satisfying $t_{exc}>t_{exc,req}$ under our design requirements lies inside the blue contour line.}
+    \caption{Excess time $t_{exc}$ (top) and charge margin $t_{cm}$ (bottom) vs. $b$ and $m_{bat}$, all at $\lambda=18.5$. The configuration subset $\pazocal{S}$ satisfying $t_{exc}>t_{exc,req}$ under our design requirements lies inside the blue contour line.}
     \label{fig:ExcessTimeChargeMargin}
 \end{figure}
 \begin{table}[h] 
@@ -124,10 +125,10 @@ To verify the multi-day flight robustness of the developed UAV configuration, we
 \begin{equation}
 P_{solar}^{\,dist}(t) = P_{solar}^{\,nom}(t) \cdot k_{CCF}.
 \end{equation}
-Here, $k_{CCF}=[0,1]$  represents the current cloud cover factor \cite{Kimura_SolarRadAndClouds}, i.e. the clearness of the atmosphere.
+Here, $k_{CCF} \in (0,1]$  represents the current cloud cover factor \cite{Kimura_SolarRadAndClouds}, i.e. the clearness of the atmosphere.
 \item The disturbed electrical power output $P_{out}^{\,dist}$. Wind downdrafts, head wind, or gusts may require increased propulsion or actuation power. Again, we assume 
 \begin{equation}
-P_{out}^{\,dist}(t) = P_{out}^{\,nom}(t) \cdot k_{OPF},
+P_{out}^{\,dist}(t) = P_{out}^{\,nom}(t) \cdot k_{OPF},~k_{OPF} \in (0,1)
 \end{equation}
 with $k_{OPF}$ representing the Output Power Factor.
 \end{itemize}
@@ -138,4 +139,4 @@ with $k_{OPF}$ representing the Output Power Factor.
     \caption{Excess time under disturbed power input and output for the $b=5.6m$, $\lambda=18.5$ configuration: a) $m_{bat}$=3.5kg on June 21\textsuperscript{st} b) $m_{bat}=6.0kg$ on June 21\textsuperscript{st} c) $m_{bat}$=3.5kg on April 21\textsuperscript{st} d) $m_{bat}=6.0kg$ on April 21\textsuperscript{st} }
     \label{fig:ExcessTimeRobustness}
 \end{figure}
-Fig. \ref{fig:ExcessTimeRobustness} shows the remaining excess time with respect to these disturbances. The UAV configuration developed in section \ref{sec:ConceptDesignApplication} ($m_{bat}=3.5kg$) still provides perpetual endurance with less than 50\% of the solar power income or if more than 60\% surplus power are required on June 21\textsuperscript{st} (Fig. \ref{fig:ExcessTimeRobustness}a). In contrast, a configuation purely optimized towards excess time ($m_{bat}=6.0kg$, Fig. \ref{fig:ExcessTimeRobustness}b) will yield a higher maximum $t_{exc}$ of 9.5h, but the robustness with respect to clouds or higher required level power is greatly decreased. On April  21\textsuperscript{st}, the UAV configuration of section \ref{sec:ConceptDesignApplication} still provides solid robustness (Fig. \ref{fig:ExcessTimeRobustness}c), which verifies the $DoY^{\,nom}\pm$ 2 months perpetual endurance requirement. In contrast, the $m_{bat}=6.0kg$ configuration (Fig. \ref{fig:ExcessTimeRobustness}d) can not provide reliable perpetual endurance anymore. Overall, the configuration developed using the extended optimization criteria from Sec. \ref{sec:ExtensionOptCriteria} thus shows significantly improved multi-day flight robustness in comparison with configurations that are purely optimized for maximum excess time.
+Fig. \ref{fig:ExcessTimeRobustness} shows the remaining excess time with respect to these disturbances. The UAV configuration developed in Section \ref{sec:ConceptDesignApplication} ($m_{bat}=3.5kg$) still provides perpetual endurance with less than 50\% of the solar power income or if more than 60\% surplus power are required on June 21\textsuperscript{st} (Fig. \ref{fig:ExcessTimeRobustness}a). In contrast, a configuation purely optimized towards excess time ($m_{bat}=6.0kg$, Fig. \ref{fig:ExcessTimeRobustness}b) will yield a higher maximum $t_{exc}$ of 9.5h, but the robustness with respect to clouds or higher required level power is greatly decreased. On April  21\textsuperscript{st}, the UAV configuration of Section \ref{sec:ConceptDesignApplication} still provides solid robustness (Fig. \ref{fig:ExcessTimeRobustness}c), which verifies the $DoY^{\,nom}\pm$ 2 months perpetual endurance requirement. In contrast, the $m_{bat}=6.0kg$ configuration (Fig. \ref{fig:ExcessTimeRobustness}d) can not provide reliable perpetual endurance anymore. Overall, the configuration developed using the extended optimization criteria from Sec. \ref{sec:ExtensionOptCriteria} thus shows significantly improved multi-day flight robustness in comparison with configurations that are purely optimized for maximum excess time.

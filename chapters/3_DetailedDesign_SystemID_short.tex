@@ -1,6 +1,6 @@
 %	This subsection overviews the system identification methods employed for AtlantikSolar
 
-Towards aiding the control synthesis procedure, a simplified linear state--space representation of the UAV dynamics was also derived based on recorded flight data and frequency--domain system identification methods. Around level flight, linear models may capture the vehicle response for small perturbations around a given equilibrium. Decoupling the longitudinal and lateral axis, the dynamics of a UAV may take the form presented in ~\cite{dorobantu2011frequency} and used in the authors previous work~\cite{Oettershagen_MED14_L1MPC}. Within this work the exact aforementioned lateral dynamics representation is employed while the longitudinal are extended to account for the effect of throttle and are expressed as:
+Towards aiding the control synthesis procedure, a simplified linear state--space representation of the UAV dynamics was also derived based on recorded flight data and frequency--domain system identification methods. For approximately level flight, linear models may capture the vehicle response for small perturbations around a given equilibrium. Decoupling the longitudinal and lateral axis, the dynamics of a UAV may take the form presented in ~\cite{dorobantu2011frequency} and used in the authors previous work~\cite{Oettershagen_MED14_L1MPC}. Within this work the exact aforementioned lateral dynamics representation is employed while the longitudinal are extended to account for the effect of throttle and are expressed as:
 
 \small
 \begin{eqnarray}\label{LON_DYN}
@@ -14,8 +14,8 @@ where $\hat{u},\hat{w},\hat{q},\theta$ correspond to the predicted body $x$--, $
 \begin{eqnarray}
 \mathbf{M}_{lon} &=& \begin{bmatrix}
 
-m & 0 & 0 & 0\\ 
-0 & m & 0 & 0\\ 
+m_{tot} & 0 & 0 & 0\\ 
+0 & m_{tot} & 0 & 0\\ 
 0 & 0 & I_y & 0\\ 
 0 & 0 & 0 & 1
 \end{bmatrix},~
