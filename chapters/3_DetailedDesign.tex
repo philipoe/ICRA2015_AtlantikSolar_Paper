@@ -2,14 +2,15 @@
 \section{DETAILED DESIGN AND REALIZATION}\label{sec:detailed_design}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-AtlantikSolar (Fig. \ref{fig:AtlantikSolarCollage}) is a solar-powered Low-Altitude Long-Endurance(LALE) UAV designed and built at ETH Zurich for perpetual flight at $\varphi=45\degree N$ geographical latitude from April 21\textsuperscript{st} to August 21\textsuperscript{st}. Although its design is mostly dictated by the requirement for low level flight power consumption, it provides means to mount an advanced optical and infrared sensor pod developed at ETH Zurich for use in autonomous search and rescue or industrial inspection missions. The airplane airframe characteristics are summarized in table \ref{tab:DetailedDesignParameters}. An overview over the airplane system topology is given in Fig. \ref{fig:AtlantikSolar_SystemOverview}.
+\textit{AtlantikSolar}~(Fig. \ref{fig:AtlantikSolarCollage}) is a solar-powered LALE-UAV designed and built at ETH Zurich for perpetual flight at $\varphi=45\degree N$ geographical latitude from April 21\textsuperscript{st} to August 21\textsuperscript{st}. Although its design is mostly dictated by the requirement for low level flight power consumption, it provides means to mount an advanced optical and infrared sensor pod developed at ETH Zurich for use in autonomous search and rescue or industrial inspection missions. An overview over the airplane system topology is given in Fig. \ref{fig:AtlantikSolar_SystemOverview} and the airplane airframe characteristics are summarized in table \ref{tab:DetailedDesignParameters}.
 
-\begin{figure}[h]
+\begin{figure}[t]
     \centering
-    \includegraphics[width=\linewidth]{images/10_CAD_AtlantikSolarAvionicsCombined/10_CAD_AtlantikSolarAvionicsCombined}
-    \caption{Left: Wing structure with integrated batteries and solar cells. Right: Main avionics layout inside the airplane.}
-    \label{fig:CAD_AtlantikSolarStructureAndAvionics}
+     \includegraphics[width=\linewidth]{images/8_AtlantikSolar_Avionics}
+    \caption{AtlantikSolar system overview. For clarity, voltage lines from the autopilot to connected devices (5.0V and 3.3V) are omitted.}
+    \label{fig:AtlantikSolar_SystemOverview}
 \end{figure}
+
 %\begin{figure}[tb]
 %    \centering
 %    \includegraphics[width=\linewidth]{images/6_CAD_AtlantikSolarFull}
@@ -17,23 +18,26 @@ AtlantikSolar (Fig. \ref{fig:AtlantikSolarCollage}) is a solar-powered Low-Altit
 %    \label{fig:CAD_AtlantikSolarFull}
 %\end{figure}
 
-\begin{table}
+\begin{table}[h]
 \caption{AtlantikSolar design characteristics}
 \label{tab:DetailedDesignParameters}
 \begin{center}
 \begin{tabular}{l l}
+\toprule
+Parameter & Value \\
+\midrule
 Wing span & 5.65$\unit{m}$\\
-\hline Wing chord& 0.305$\unit{m}$\\
-\hline Length& 2.03\unit{m}\\
-\hline Height&0.45\unit{m}\\
-\hline Mass& 7.36$\unit{kg}$\\
-\hline Battery mass& 3.52$\unit{kg}$\\
-\hline Wing loading&4.28$\unitfrac{kg}{m^2}$\\
-\hline Stall speed& 8.1$\unitfrac{m}{s}$\\
+ Wing chord& 0.305$\unit{m}$\\
+ Length& 2.03\unit{m}\\
+ Height&0.45\unit{m}\\
+ Mass& 7.36$\unit{kg}$\\
+ Battery mass& 3.52$\unit{kg}$\\
+ Wing loading&4.28$\unitfrac{kg}{m^2}$\\
+ Stall speed& 8.1$\unitfrac{m}{s}$\\
+\bottomrule
 \end{tabular}
 \end{center}
 \end{table}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{UAV Platform Design}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,19 +45,19 @@ Wing span & 5.65$\unit{m}$\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Airframe}\label{secsec:Airframe and hardware}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The wing and stabilizers of AtlantikSolar are built in a traditional rib-spar construction method (Fig. \ref{fig:CAD_AtlantikSolarStructureAndAvionics}). The wing's main element is an inner cylindrical carbon-fibre spar to resist torsional wing loads. Four carbon-fibre belts of trapezoidal and laterally-varying cross-section are attached to the spar to optimally resist bending loads and to provide maximum wing stiffness to avoid bending of the solar cells. The main wing can be disassembled into three wing pieces of $b<2m$ each.
+The wing and stabilizers of \textit{AtlantikSolar} are built in a traditional rib-spar construction method (Fig. \ref{fig:CAD_AtlantikSolarStructureAndAvionics}). The wing's main element is an inner cylindrical carbon-fibre spar to resist torsional wing loads. Four carbon-fibre belts of trapezoidal and laterally-varying cross-section are attached to the spar to optimally resist bending loads and to provide maximum wing stiffness to avoid bending of the solar cells. The main wing can be disassembled into three wing pieces of $b<2m$ each.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{images/10_CAD_AtlantikSolarAvionicsCombined/10_CAD_AtlantikSolarAvionicsCombined}
+    \caption{Left: Wing structure with integrated batteries and solar cells. Right: Main avionics layout inside the airplane.}
+    \label{fig:CAD_AtlantikSolarStructureAndAvionics}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Energy Generation and Storage}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The cylindrical wing spars are fitted with 72 cylindrical high energy-density Lithium-Ion batteries (Panasonic NCR18650b, 243Wh/kg) to optimally distribute the mass in a \textit{span loader} concept. The cells are connected in a 6S (22.2V) configuration and provide $E_{bat,max}=850Wh$ at $m_{bat}=3.5kg$. The solar modules feature a total of 88 SunPower C60 cells with $\eta_{sm}=0.20$, an areal density of $k_{sm}=590g/m^2$ and a maximum power output of 275W at $\varphi=45\degree$ on June 21\textsuperscript{st}. Modules featuring SunPower E60 cells with $\eta_{sm}=0.23$ are currently being integrated\cite{Sunier_EPFLSolarModules}. The solar modules are seamlessly embedded in the upper wing surface to avoid premature flow separation.
-
-\begin{figure}[tb]
-    \centering
-     \includegraphics[width=\linewidth]{images/8_AtlantikSolar_Avionics}
-    \caption{AtlantikSolar system overview. For clarity, voltage lines from the autopilot to connected devices (5.0V and 3.3V) are omitted.}
-    \label{fig:AtlantikSolar_SystemOverview}
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Actuation}
@@ -70,7 +74,7 @@ The avionics installation (Figs. \ref{fig:AtlantikSolar_SystemOverview} and \ref
 \subsubsection{Payload}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % [THOMAS]
-The capabilities of AtlantikSolar are augmented by a sensor and processing unit which may be mounted beneath the wing. It incorporates a \emph{visual-inertial sensor system} \cite{nikolic2014synchronized} and a small form factor computer based on an Intel Atom processor. The former consists of an ARM-FPGA system, an ADIS 16448 IMU as well as two cameras - a FLIR Tau 2 for long-wavelength infrared (LWIR) and an Aptina MT9V034 for visible light imaging - and allows accurate real-time SLAM\cite{Leutenegger_PhD}. The latter is intended for high-level path planning and equipped with WiFi-communication to transmit a video feed to the ground.
+The capabilities of AtlantikSolar are augmented by a sensor and processing unit which may be mounted beneath the wing. It incorporates a \emph{visual-inertial sensor system} \cite{nikolic2014synchronized} and a small form factor computer based on an Intel Atom processor. The former consists of an ARM-FPGA system, an ADIS 16448 IMU as well as two cameras - a FLIR Tau 2 for Long-Wavelength Infrared (LWIR) and an Aptina MT9V034 for visible light imaging - and allows accurate real-time SLAM\cite{Leutenegger_PhD}. The latter is intended for high-level path planning and equipped with WiFi-communication to transmit a video feed to the ground.
 
 %\begin{figure}[!htb]
 %  \begin{center}
@@ -95,7 +99,7 @@ The capabilities of AtlantikSolar are augmented by a sensor and processing unit 
 \subsubsection{State Estimation} \label{secsec:StateEstimation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The on-board state estimator is based on an extended Kalman filter (EKF) design that fuses data from the 10-axis IMU, GPS and airspeed sensor as described in Sec. \ref{secsec:Avionics}. It is implemented and optimized in order to grant full functionality on the microcontroller-based autopilot and offers a robust estimation solution that can cope with prolonged GPS outage scenarios by compensating through airspeed measurements. Successive estimations of the position, velocity, orientation (attitude and heading), QFF, gyroscopes biases, accelerometers biases and the wind vector are rendered, with sideslip angle and angle of attack (AoA) being subsequently derived from these estimates. A detailed description and verification of the state estimator functionality can be found in \cite{Leutenegger_MSC2014}.
+The on-board state estimator is based on an EKF design that fuses data from the 10-axis IMU, GPS and airspeed sensor as described in Sec. \ref{secsec:Avionics}. It is implemented and optimized in order to grant full functionality on the microcontroller-based autopilot and offers a robust estimation solution that can cope with prolonged GPS outage scenarios by compensating through airspeed measurements. Successive estimations of the position, velocity, orientation (attitude and heading), QFF, gyroscopes biases, accelerometers biases and the wind vector are rendered, with sideslip angle and angle of attack (AoA) being subsequently derived from these estimates. A detailed description and verification of the state estimator functionality can be found in \cite{Leutenegger_MSC2014}.
   
 %\begin{figure}[tb]
 %    \centering
