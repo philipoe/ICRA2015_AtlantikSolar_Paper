@@ -1,0 +1,51 @@
+%	This subsection overviews the system identification methods employed for AtlantikSolar
+
+Towards aiding the control synthesis procedure, a simplified linear state--space representation of the UAV dynamics was also derived based on recorded flight data and frequency--domain system identification methods. Around level flight, linear models may capture the vehicle response for small perturbations around a given equilibrium. Decoupling the longitudinal and lateral axis, the dynamics of a UAV may take the form presented in ~\cite{dorobantu2011frequency} and used in the authors previous work~\cite{Oettershagen_MED14_L1MPC}. Within this work the exact aforementioned lateral dynamics representation is employed while the longitudinal are extended to account for the effect of throttle and are expressed as:
+
+\small
+\begin{eqnarray}\label{LON_DYN}
+ \mathbf{M}_{lon}\dot{\mathbf{\hat{x}}}_{lon} &=& \mathbf{A}^\prime_{lon}\mathbf{\hat{x}}_{lon}+\mathbf{B}^\prime_{lon}\mathbf{u}_{lon} \\ \nonumber
+ \mathbf{\hat{x}}_{lon} &=& \left[ \hat{u}~\hat{w}~\hat{q}~\hat{\theta} \right]^T
+\end{eqnarray}
+\normalsize
+where $\hat{u},\hat{w},\hat{q},\theta$ correspond to the predicted body $x$--, $z$--axis velocities, the pitch rate and the pitch angle respectively, $\mathbf{u}_{lon} = [u_{Elev}~u_{Throt}]$ corresponds to the elevator deflection and the throttle command respectively, while
+
+\footnotesize
+\begin{eqnarray}
+\mathbf{M}_{lon} &=& \begin{bmatrix}
+
+m & 0 & 0 & 0\\ 
+0 & m & 0 & 0\\ 
+0 & 0 & I_y & 0\\ 
+0 & 0 & 0 & 1
+\end{bmatrix},~
+\mathbf{B}^\prime_{lon} = \begin{bmatrix}
+X_{u_{elev}} & X_{u_{throt}}\\ 
+Z_{u_{elev}} & Z_{u_{throt}}\\ 
+M_{u_{elev}} & M_{u_{throt}}\\ 
+0
+\end{bmatrix} \\ \nonumber
+\mathbf{A}^\prime_{lon} &=& \begin{bmatrix}
+X_u & X_w & X_q-m_{tot}W_e & -m_{tot}g\cos\theta_e\\ 
+Z_u & Z_w & Z_q+m_{tot}U_e & -m_{tot}g\sin\theta_e\\ 
+M_u & M_w & M_q & 0 \\ 
+0 & 0 & 1 & 0
+\end{bmatrix}
+\end{eqnarray}
+\normalsize
+where $W_e,U_e,\theta_e$ are the trimming points of $u,w,\theta$ and the elements of $\mathbf{M}_{lon},\mathbf{A}^\prime_{lon}$ and $\mathbf{B}^\prime_{lon}$ form the stability and control derivatives of the longitudinal dynamics. 
+
+The frequency--domain system identification framework employed is based on the objective function and guidelines outlined in~\cite{TISCHLER_BOOK} and its specifics were further detailed in our previous work~\cite{Oettershagen_MED14_L1MPC}. Employing the same methods, models of sufficient fidelity were derived for the AtlantikSolar UAV as shown in Figure~\ref{SysID_LonValid}, while the increased coherence values indicate that the linearity assumption within such a subset of the flight envelope is effectively correct. Results of similar quality are also derived for the case of the lateral dynamics. 
+
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+%\begin{center}
+\centering
+  \includegraphics*[width=8.5cm]{images/AtlantikSolar_SysID_Lon_Valid.eps}
+%\end{center}
+\caption{Longitudinal dynamics system identification validation. The angle of attack $\alpha$ is computed based on the experimental and model--predicted values for $u$ and $w$. Results for $1\textrm{h}$ are shown along with a closer look to $60\textrm{sec}$ of the flight and the coherence values $\gamma$ between the experimental $\alpha,q,\theta$ and the predicted $\hat{\alpha},\hat{q},\hat{\theta}$. }
+\label{SysID_LonValid}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 

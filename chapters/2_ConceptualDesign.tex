@@ -14,7 +14,7 @@ consists of the required electrical propulsion power for level-flight $\frac{P_{
 \begin{equation} \label{eqn:P_level}
 P_{level}=\left(\frac{C_D}{C_L^\frac{3}{2}}\right)_{min}\sqrt{\frac{2(m_{tot}g)^3}{\rho(h)A_{wing}}} .
 \end{equation}
-Here, $m_{tot}=m_{bat}+m_{struct}+m_{prop}+m_{sm}+m_{av}+m_{pld}$ is the total airplane mass, where structure, propulsion and solar module masses $m_{struct}$, $m_{prop}$, $m_{sm}$ are automatically sized according to \cite{Noth_PhD,Leutenegger_JIRS} and $m_{av}$, $m_{pld}$ are given in table \ref{tab:ConceptDesignParameters}. The local earth gravity is designated by $g$, $A_{wing}$ is the wing area, and $\rho$ is air density. The airplane lift and drag coefficients $C_L$ and $C_D$ are retrieved from 2-D airfoil simulations using XFoil \cite{Drela_XFoil}, with $C_D$ being combined with parasitic drag from the airplane fuselage and stabilizers and the induced drag  
+Here, $m_{tot}=m_{bat}+m_{struct}+m_{prop}+m_{sm}+m_{av}+m_{pld}$ is the total airplane mass, where structure, propulsion and solar module masses $m_{struct}$, $m_{prop}$, $m_{sm}$ are automatically sized according to \cite{Noth_PhD,Leutenegger_JIRS} and $m_{av}$, $m_{pld}$ are given in table \ref{tab:ConceptDesignParameters}. The local earth gravity is designated by $g$, $A_{wing}$ is the wing area, and $\rho$ is the air density. The airplane lift and drag coefficients $C_L$ and $C_D$ are retrieved from 2-D airfoil simulations using XFoil \cite{Drela_XFoil}, with $C_D$ being combined with parasitic drag from the airplane fuselage and stabilizers and the induced drag  
 \begin{equation} \label{eqn:C_D}
 C_{D,ind}=\frac{c_L^2}{\pi\cdot e_0\cdot\lambda} .
 \end{equation}
@@ -32,10 +32,10 @@ The state equation is now
 \end{equation}
 Here, $u$ is the actual electrical power sent to the propulsion system. Simple forward integration of the state equation (\ref{eqn:StateEquations}) gives the battery state of charge (SoC) over time and thus determines the perpetual flight capability.
 
-For the design optimization, we assume that a solar-powered UAV configuration is designed for missions at and around a specific date of the year (DoY) and geographical latitude $\varphi$, and thus $\varphi$ and $DoY$ are fixed. The three design parameters are 1) wingspan $b$ and 2) wing aspect ratio $\lambda$, which both specify wing geometry and thus influence level-power (\ref{eqn:P_level}) and solar input power (\ref{eqn:P_solar}), and 3) the battery mass $m_{bat}$ contained in $m_{tot}$ in (\ref{eqn:P_level}) .
+For the design optimization, we assume that a solar-powered UAV configuration is designed for missions at and around a specific date of the year (DoY) and geographical latitude $\varphi$, thus $\varphi$ and $DoY$ are fixed. The three design parameters are a) wingspan $b$ and b) wing aspect ratio $\lambda$, which both specify wing geometry and thus influence level-power (\ref{eqn:P_level}) and solar input power (\ref{eqn:P_solar}), and c) the battery mass $m_{bat}$ contained in $m_{tot}$ in (\ref{eqn:P_level}) .
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Extension of conceptual design optimization criteria}
+\subsection{Extension of Conceptual Design Optimization Criteria}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \label{sec:ExtensionOptCriteria}
@@ -46,13 +46,13 @@ The conceptual design tool developed in \cite{Noth_PhD,Leutenegger_JIRS} has bee
     \caption{Energetic simulation of the AtlantikSolar UAV configuration ($b=5.6m$, $\lambda=18.5$, $m_{bat}=3.5kg$), showing input and output power, battery capacity, and performance metrics excess time $t_{exc}$ and charge margin $t_{cm}$ during a 2-day flight.}
     \label{fig:EnergySimulation}
 \end{figure}
-Second, and more importantly, the optimization criteria are extended to achieve more robust multi-day flight. In general, a necessary and sufficient condition for perpetual flight is that the excess time $t_{exc}>0$, where
+Second, and more importantly, the optimization criteria are extended to achieve a more robust multi-day flight. In general, a necessary and sufficient condition for perpetual flight is that the excess time $t_{exc}>0$, where
 \begin{equation} \label{eqn:t_exc}
 t_{exc}=\frac{E_{bat}(t=t_{eq})}{P_{out}^{\,nom}} \Big| P_{solar}(t>t_{sr})=0
 \end{equation}
-with \textit{power-equality time} $t_{eq}=t(P_{solar}^{\,nom}=P_{out}^{\,nom})$ in the morning. This means that at $t=t_{eq}$ there has to exist remaining battery capacity to continue flight e.g. in case of cloud coverage. This is why the authors in \cite{Noth_PhD,Leutenegger_JIRS} focus on maximizing $t_{exc}$. However, a large $t_{exc}$ does not provide direct robustness against disturbances in $P_{solar}$ e.g. due to clouds during the charging process. In contrast, when optimizing purely for $t_{exc}$, the methodology in Sec. \ref{sec:ConceptualDesignMethodology} will select the largest battery size (due to the scaling of $P_{level}$ with $m_{bat}$) which can be fully charged under optimal conditions, but every reduction in $P_{solar}$ will directly decrease $t_{exc}$ due to only partially charged batteries. We thus introduce the charge margin $t_{cm}$ as the time margin between achieving the full charge $E_{bat}=E_{bat}^{\,max}$ and restart of the discharge in the evening. In case of decreased solar power income, $t_{cm}>0$ provides additional margin before a decrease in excess time occurs.
+with \textit{power-equality time} $t_{eq}=t(P_{solar}^{\,nom}=P_{out}^{\,nom})$ in the morning. This means that at $t=t_{eq}$ there has to exist remaining battery capacity to continue flight e.g. in case of cloud coverage. Therefore, the authors in \cite{Noth_PhD,Leutenegger_JIRS} focus on maximizing $t_{exc}$. However, a large $t_{exc}$ does not provide direct robustness against disturbances in $P_{solar}$ e.g. due to cloud coverage during the charging process. In contrast, when optimizing purely for $t_{exc}$, the methodology in Sec. \ref{sec:ConceptualDesignMethodology} will select the largest battery size (due to the scaling of $P_{level}$ with $m_{bat}$) which can be fully charged under optimal conditions, but every reduction in $P_{solar}$ will directly decrease $t_{exc}$ due to only partially charged batteries. Thus, we introduce the charge margin $t_{cm}$ as the time margin between achieving the full charge $E_{bat}=E_{bat}^{\,max}$ and restart of the discharge in the evening. In case of decreased solar power income, $t_{cm}>0$ provides additional margin before a decrease in excess time occurs.
 
-The overall approach for increasing robustness with respect to local power disturbances is thus to determine the lowest acceptable $t_{exc}$ satisfying the UAV application requirements, and to then optimize the configuration for $t_{cm}$. The exact procedure applied here is:
+The overall approach for increasing robustness with respect to local power disturbances is thus to determine the lowest acceptable $t_{exc}$ satisfying the UAV application requirements, and then to optimize the configuration for $t_{cm}$. The exact procedure applied is:
 \vspace{-3ex}
 \begin{algorithm}[htp]
   \SetAlgoLined\DontPrintSemicolon
@@ -60,7 +60,7 @@ The overall approach for increasing robustness with respect to local power distu
   \SetKwProg{myproc}{}{}{}
   \myproc{} %\proc{}
   {
-  \nl Choose nominal operating latitude $\varphi$ and Day of Operation $DoY^{nom}$ and the outermost days where perpetual UAV endurance is required $DoY^{\min,\max}$ \;
+  \nl Choose nominal operating latitude $\varphi$, and Day of Operation $DoY^{nom}$ and the outermost days where perpetual UAV endurance is required $DoY^{\min,\max}$ \;
   \nl For the range of $DoY=[DoY^{\min},DoY^{\max}]$ obtain $t_{night}^{\min},~t_{night}^{\max}$ from~\cite{Duffie_SolarEngineering}; \;
   \nl The required excess time $t_{exc,req}$ is now the sum of;  \; 
   \pushline
@@ -77,7 +77,7 @@ The overall approach for increasing robustness with respect to local power distu
 This conceptual design methodology is applied below. An alternative conceptual design approach utilizing a weighted version of $t_{exc}$ and $t_{cm}$ is proposed in \cite{Morton_ICRA2013}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Application of Conceptual Design methodology} \label{sec:ConceptDesignApplication}
+\subsection{Application of Conceptual Design Methodology} \label{sec:ConceptDesignApplication}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 AtlantikSolar operates at a nominal latitude of $\varphi=45\degree N$ and shall provide perpetual endurance within a +/-2 month window around $DoY_{nom}$=June 21\textsuperscript{st} (April 21\textsuperscript{st}-August 21\textsuperscript{st}). From \cite{Duffie_SolarEngineering}, we find $t_{night}^{\,min}=8.7h$ (June 21\textsuperscript{st}), $t_{night}^{\,max}=10.5h$(April 21\textsuperscript{st}), and thus $t_{exc,DoY}=1.80h$. We choose $t_{exc,clouds}=3.0h$ to account for three hours of full cloud coverage either on the evening or the morning and choose $t_{exc,P_{level}}=0.2\cdot t_{night,max}=2.1h$ to cover increased power consumption due to modelling errors, downdrafts or headwinds. Using $t_{exc,req}=t_{exc,DoY}+t_{exc,clouds}+t_{exc,P_{level}}$, we retrieve $t_{exc,req}=6.9h$ as the minimum required excess time for robust perpetual-flight at the given dates and locations. 
@@ -110,7 +110,7 @@ The design methodology tool of Sec. \ref{sec:ConceptualDesignMethodology} is now
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Robustness analysis}
+\subsection{Robustness Analysis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 To verify the multi-day flight robustness of the developed UAV configuration, we analyze its performance considering a set of local disturbances in UAV power input and output, namely
