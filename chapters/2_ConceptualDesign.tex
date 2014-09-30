@@ -28,11 +28,11 @@ considers the solar module area $A_{sm}=f_{sm}\cdot A_{wing}$ with relative fill
 The state equation is now
 \begin{equation}\label{eqn:StateEquations}
 \begin{array}{r@{}l}
-\frac{dE_{bat}}{dt}&=P_{solar}(\varphi,h,t)-u-P_{av}-P_{pld},\\
-\frac{dh}{dt}&=\frac{\eta_{prop}\cdot u-P_{level}(h)}{m_{tot}g} .
+\frac{dE_{bat}}{dt}&=P_{solar}(\varphi,h,t)-P_{el}-P_{av}-P_{pld},\\
+\frac{dh}{dt}&=\frac{\eta_{prop}\cdot P_{el}-P_{level}(h)}{m_{tot}g} .
 \end{array}
 \end{equation}
-Here, $u$ is the current electrical power sent to the propulsion system and $P_{solar}$ denotes the incoming solar power. By solving the system of differential equations in (\ref{eqn:StateEquations}), the energy stored in the batteries may be obtained and thus the perpetual flight capability of the UAV determined.
+Here, $P_{el}$ is the current electrical power sent to the propulsion system and $P_{solar}$ denotes the incoming solar power. By solving the system of differential equations in (\ref{eqn:StateEquations}), the energy stored in the batteries may be obtained and thus the perpetual flight capability of the UAV determined.
 
 For the design optimization, we assume that a solar-powered UAV configuration is designed for missions at and around a specific Date of the Year (DoY) and geographical latitude $\varphi$, thus $\varphi$ and $DoY$ are fixed. The three design parameters are a) wingspan $b$ and b) wing aspect ratio $\lambda$, which both specify wing geometry and thus influence level-power (\ref{eqn:P_level}) and solar input power (\ref{eqn:P_solar}), and c) the battery mass $m_{bat}$ contained in $m_{tot}$ in (\ref{eqn:P_level}).
 
