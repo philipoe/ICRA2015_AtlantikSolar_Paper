@@ -8,11 +8,11 @@
 \subsection{Methodology} \label{sec:ConceptualDesignMethodology}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The conceptual design methodology for solar-powered UAVs used in this paper was developed at ETH Zurich in~\cite{Noth_PhD,Leutenegger_JIRS} and is briefly summarized below. To analyze flight performance and a potential perpetual flight capability, the energy input/output-balance needs to be modeled. The total required nominal electrical output power
+The conceptual design methodology for solar-powered UAVs used in this paper was developed at ETH Zurich in~\cite{Noth_PhD,Leutenegger_JIRS} and is briefly summarized below. To analyze flight performance and a potential perpetual flight capability, the energy input/output-balance under the assumption of level flight at lowest admissible altitude is modeled. The total required nominal electrical output power
 \begin{equation} \label{eqn:P_out}
 P_{out}^{\,nom}=\frac{P_{level}}{\eta_{prop}}+P_{av}+P_{pld}
 \end{equation}
-consists of the required electrical propulsion power for level-flight $\frac{P_{level}}{\eta_{prop}}$ , where $\eta_{prop}$ includes propeller, gearbox, motor, and motor-controller efficiency, and the necessary avionics and payload power $P_{av}$ and $P_{pld}$. The UAV is assumed to fly at the airspeed of minimum aerodynamic level-flight power
+consists of the required electrical propulsion power for level-flight $\frac{P_{level}}{\eta_{prop}}$, where $\eta_{prop}$ includes propeller, gearbox, motor, and motor-controller efficiency, and the necessary avionics and payload power $P_{av}$ and $P_{pld}$. The UAV is assumed to fly at the airspeed of minimum aerodynamic level-flight power
 \begin{equation} \label{eqn:P_level}
 P_{level}=\left(\frac{C_D}{C_L^\frac{3}{2}}\right)_{min}\sqrt{\frac{2(m_{tot}g)^3}{\rho(h)A_{wing}}} .
 \end{equation}
@@ -25,14 +25,25 @@ Here, $e_0\approx0.92$ is the Oswald efficiency and $\lambda$ the wing aspect ra
 P_{solar}^{\,nom}=I\cdot A_{sm}\cdot\eta_{sm}\cdot\eta_{mppt}
 \end{equation}
 considers the solar module area $A_{sm}=f_{sm}\cdot A_{wing}$ with relative fill-factor $f_{sm}$, module efficiency $\eta_{sm}$, and Maximum Power Point Tracker (MPPT) efficiency $\eta_{mppt}$. The solar radiation $I=I(\varphi,h,t)$ is assumed to be a function of the geographical latitude $\varphi$, the altitude $h$, and the current date and local time $t$, and is modeled as in \cite{Duffie_SolarEngineering}.
-The state equation is now
-\begin{equation}\label{eqn:StateEquations}
+While the batteries are not fully charged ($E_{bat} < E_{bat}^{max}$), the energy balance may be written as
+\begin{equation}\label{eqn:EnergyBalance}
 \begin{array}{r@{}l}
-\frac{dE_{bat}}{dt}&=P_{solar}(\varphi,h,t)-P_{el}-P_{av}-P_{pld},\\
+\frac{dE_{bat}}{dt}&=P_{solar}(\varphi,h,t)-P_{el}-P_{av}-P_{pld} .
+\end{array}
+\end{equation}
+%\begin{equation}\label{eqn:StateEquations}
+%\begin{array}{r@{}l}
+%\frac{dE_{bat}}{dt}&=P_{solar}(\varphi,h,t)-P_{el}-P_{av}-P_{pld},\\
+%\frac{dh}{dt}&=\frac{\eta_{prop}\cdot P_{el}-P_{level}(h)}{m_{tot}g} .
+%\end{array}
+%\end{equation}
+Here, $P_{el}$ is the current electrical power sent to the propulsion system and $P_{solar}$ denotes the incoming solar power. Additionally the UAV is allowed to climb within some boundaries as soon as the batteries are fully charged using excessive energy:\\
+\begin{equation}\label{eqn:dhdt}
+\begin{array}{r@{}l}
 \frac{dh}{dt}&=\frac{\eta_{prop}\cdot P_{el}-P_{level}(h)}{m_{tot}g} .
 \end{array}
 \end{equation}
-Here, $P_{el}$ is the current electrical power sent to the propulsion system and $P_{solar}$ denotes the incoming solar power. By solving the system of differential equations in (\ref{eqn:StateEquations}), the energy stored in the batteries may be obtained and thus the perpetual flight capability of the UAV determined.
+By integration of the differential equations in (\ref{eqn:EnergyBalance}) and (\ref{eqn:dhdt}), the energy stored in the batteries may be obtained and thus the perpetual flight capability of the UAV determined.
 
 For the design optimization, we assume that a solar-powered UAV configuration is designed for missions at and around a specific Date of the Year (DoY) and geographical latitude $\varphi$, thus $\varphi$ and $DoY$ are fixed. The three design parameters are a) wingspan $b$ and b) wing aspect ratio $\lambda$, which both specify wing geometry and thus influence level-power (\ref{eqn:P_level}) and solar input power (\ref{eqn:P_solar}), and c) the battery mass $m_{bat}$ contained in $m_{tot}$ in (\ref{eqn:P_level}).
 
@@ -45,7 +56,7 @@ The conceptual design tool developed in \cite{Noth_PhD,Leutenegger_JIRS} has bee
 \begin{figure}[tb]
     \centering
     \includegraphics[width=\linewidth]{images/2_EnergySimulation.pdf}
-    \caption{Energetic simulation of the AtlantikSolar UAV configuration ($b=5.6m$, $\lambda=18.5$, $m_{bat}=3.5kg$), showing input and output power, battery capacity, and performance metrics excess time $t_{exc}$ and charge margin $t_{cm}$ during a 2-day flight.}
+    \caption{Exemplary energetic simulation of the \textit{AtlantikSolar} UAV configuration ($b=5.6m$, $\lambda=18.5$, $m_{bat}=3.5kg$), showing input and output power, battery capacity, and performance metrics excess time $t_{exc}$ and charge margin $t_{cm}$ during a 2-day flight.}
     \label{fig:EnergySimulation}
 \end{figure}
 Second, and more importantly, the optimization criteria are extended to achieve a more robust multi-day flight. In general, a necessary and sufficient condition for perpetual flight is that the excess time $t_{exc}>0$, where
@@ -83,7 +94,7 @@ This conceptual design methodology is applied below. An alternative conceptual d
 \subsection{Application of Conceptual Design Methodology} \label{sec:ConceptDesignApplication}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-AtlantikSolar operates at a nominal latitude of $\varphi=45\degree N$ and shall provide perpetual endurance within a +/-2 month window around $DoY_{nom}$=June 21\textsuperscript{st} (April 21\textsuperscript{st}-August 21\textsuperscript{st}). From \cite{Duffie_SolarEngineering}, we find $t_{night}^{\,min}=8.7h$ (June 21\textsuperscript{st}), $t_{night}^{\,max}=10.5h$(April 21\textsuperscript{st}), and thus $t_{exc,DoY}=1.80h$. We choose $t_{exc,clouds}=3.0h$ to account for three hours of full cloud coverage either on the evening or the morning and choose $t_{exc,P_{level}}=0.2\cdot t_{night,max}=2.1h$ to cover increased power consumption due to modelling errors, downdrafts or headwinds. Using $t_{exc,req}=t_{exc,DoY}+t_{exc,clouds}+t_{exc,P_{level}}$, we retrieve $t_{exc,req}=6.9h$ as the minimum required excess time for robust perpetual flight at the given dates and locations. 
+\textit{AtlantikSolar} operates at a nominal latitude of $\varphi=45\degree N$ and shall provide perpetual endurance within a +/-2 month window around $DoY_{nom}$=June 21\textsuperscript{st} (April 21\textsuperscript{st}-August 21\textsuperscript{st}). From \cite{Duffie_SolarEngineering}, we find $t_{night}^{\,min}=8.7h$ (June 21\textsuperscript{st}), $t_{night}^{\,max}=10.5h$(April 21\textsuperscript{st}), and thus $t_{exc,DoY}=1.80h$. We choose $t_{exc,clouds}=3.0h$ to account for three hours of full cloud coverage either on the evening or the morning and choose $t_{exc,P_{level}}=0.2\cdot t_{night,max}=2.1h$ to cover increased power consumption due to modelling errors, downdrafts or headwinds. Using $t_{exc,req}=t_{exc,DoY}+t_{exc,clouds}+t_{exc,P_{level}}$, we retrieve $t_{exc,req}=6.9h$ as the minimum required excess time for robust perpetual flight at the given dates and locations. 
 
 The design methodology tool of Sec. \ref{sec:ConceptualDesignMethodology} is now applied assuming the fixed parameters in Tab. \ref{tab:ConceptDesignParameters}. Figure \ref{fig:ExcessTimeChargeMargin} shows the resulting plot for $t_{exc}$ versus the optimization variables $b$ and $m_{bat}$. The subset $\pazocal{S}$ of configurations satisfying $t_{exc}>t_{exc,req}$ is the region within the blue contour-line. The optimum clearly occurs at large wingspans. However, considering that we aim for a small-scale and hand-launchable configuration that allows easy transportation (in this case via disassembly of the main wing into three pieces of less than $2m$ wingspan) we choose $b=5.6m$.  The aspect ratio $\lambda=18.5$ is found to provide an optimum in $t_{exc}$ and also allows to seamlessly integrate the 125mm-wide solar cells (see Sec. \ref{secsec:Airframe and hardware}) inside the wing chord. The last design choice is $m_{bat}$, for which we seek to optimize $t_{cm}$ within the previously selected set $\pazocal{S}_i=(\pazocal{S}|b=5.6m, \lambda=18.5)$. As visible in Fig. \ref{fig:ExcessTimeChargeMargin}, $m_{bat}=3.0...7.5kg$ lie within $\pazocal{S}_i$. We choose $m_{bat}=3.5kg$ to optimize $t_{cm}$ and due to practical battery sizing constraints described in Sec. \ref{secsec:Airframe and hardware}. The selected final configuration $\pazocal{S}_f=(\pazocal{S}|m_{bat}=3.5kg, b=5.6m, \lambda=18.5)$ yields an estimated $m_{tot}=7.22kg$, $t_{exc}=7.89h$ and $t_{cm}=8.38h$ for the nominal operating date and latitude.
 \begin{figure}[tb]
