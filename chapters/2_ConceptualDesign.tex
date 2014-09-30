@@ -62,16 +62,16 @@ The overall approach for increasing robustness with respect to local power distu
   \SetKwProg{myproc}{}{}{}
   \myproc{} %\proc{}
   {
-  \nl Choose nominal operating latitude $\varphi$, and Day of Operation $DoY^{nom}$ and the outermost days where perpetual UAV endurance is required $DoY^{\min,\max}$ \;
-  \nl For the range of $DoY=[DoY^{\min},DoY^{\max}]$ obtain $t_{night}^{\min},~t_{night}^{\max}$ from~\cite{Duffie_SolarEngineering} \;
+  \nl Selection of nominal operating latitude $\varphi$, and Day of Operation $DoY^{nom}$ and the outermost days where perpetual UAV endurance is required $DoY^{\min,\max}$ \;
+  \nl Obtain $t_{night}^{\min},~t_{night}^{\max}$ from~\cite{Duffie_SolarEngineering} for the range of $DoY=[DoY^{\min},DoY^{\max}]$ \;
   \nl The required excess time $t_{exc,req}$ is now the sum of  \; 
   \pushline
   \nonl \scriptsize$\bullet$\normalsize~  $t_{exc,DoY} = t_{night}^{\,max}-t_{night}^{\,min}$ \;
   \nonl \scriptsize$\bullet$\normalsize~  $t_{exc,clouds}$, to allow a margin for clouds in the morning or evening \;
   \nonl \scriptsize$\bullet$\normalsize~  $t_{exc,P_{level}}$, to allow a margin for increased power consumption e.g. caused by downdrafts or uncertainties in estimating $P_{level}$ \;
   \popline \nl 
-  \nl Perform the design analysis given the methodology in Sec.~\ref{sec:ConceptualDesignMethodology} for $DoY(t_{night}=t_{night}^{\,min})$. Pre-select the subset $\pazocal{S}$ of configurations satisfying $t_{exc}>t_{exc,req}$  \;
-  \nl Within $\pazocal{S}$, allow for a set of intermediate configurations $\pazocal{S}_i$ to take into account UAV-specific constraints on $b$, $\lambda$, or $m_{bat}$. Then choose the final configuration $\pazocal{S}_f$  from $\pazocal{S}_i$ to obtain the largest charge margin $t_{cm}$ % \; 
+  \nl Design analysis given the methodology in Sec.~\ref{sec:ConceptualDesignMethodology} for $DoY(t_{night}=t_{night}^{\,min})$. Pre-selection of the subset $\pazocal{S}$ of configurations satisfying $t_{exc}>t_{exc,req}$  \;
+  \nl Allowance for a set of intermediate configurations $\pazocal{S}_i$ Within $\pazocal{S}$ while taking UAV-specific constraints on $b$, $\lambda$, or $m_{bat}$ into account. Selection of the final configuration $\pazocal{S}_f$  from $\pazocal{S}_i$ in order to obtain the largest charge margin $t_{cm}$ % \; 
 
  }
   %\caption{Inor}
